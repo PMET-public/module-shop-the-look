@@ -1,6 +1,12 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <update handle="catalog_product_view"/>
+
     <body>
-        <block class="Magento\Catalog\Block\Product\View" name="lookbook.product.view" template="MagentoEse_LookBook::product/view.phtml"/>
+        <container name="lookbook.product.info" htmlTag="div" htmlClass="lookbook-product-info" before="-"/>
+
+        <move element="product.info.main" destination="lookbook.product.info" />
+        <move element="product.info.media" destination="lookbook.product.info" />
+        <move element="product.info.description" destination="lookbook.product.info" />
     </body>
 </page>

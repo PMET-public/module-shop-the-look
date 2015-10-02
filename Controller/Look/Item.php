@@ -16,7 +16,7 @@ class Item extends View
         $product = $this->_initProduct();
         if ($product) {
             $page = $this->resultPageFactory->create();
-            $data['html'] = $page->getLayout()->getBlock('lookbook.product.view')->toHtml();
+            $data['html'] = $page->getLayout()->renderElement('lookbook.product.info');
         } else {
             $result->setHttpResponseCode(404);
             $data['error'] = 1;
