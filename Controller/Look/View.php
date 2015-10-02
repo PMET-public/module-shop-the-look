@@ -8,13 +8,14 @@ class View extends \Magento\Catalog\Controller\Category\View
 {
     public function execute()
     {
+        /** @var \Magento\Framework\Controller\Result\Json $result */
         $result = $this->resultFactory->create(ResultFactory::TYPE_JSON);
         $data = [];
 
         $category = $this->_initCategory();
         if ($category) {
             $page = $this->resultPageFactory->create();
-            $data['html'] = $page->getLayout()->getBlock('look.view')->toHtml();
+            $data['html'] = $page->getLayout()->getBlock('lookbook.look.products.list')->toHtml();
         } else {
             $result->setHttpResponseCode(404);
             $data['error'] = 1;

@@ -1,0 +1,32 @@
+<?php
+    /** @var Magento\Catalog\Block\Product\ListProduct $block */
+    $productCollection = $block->getLoadedProductCollection();
+    $helper = $this->helper('Magento\Catalog\Helper\Output');
+?>
+<?php if ($productCollection->count()): ?>
+    <div class="products wrapper lookbook">
+        <?php $iterator = 1; ?>
+        <ol class="products list items product-items">
+            <?php /** @var $product \Magento\Catalog\Model\Product */ ?>
+            <?php foreach ($productCollection as $product): ?>
+                <?= ($iterator++ == 1) ? '<li class="item product product-item">' : '</li><li class="item product product-item">' ?>
+                <div class="product-item-info" data-container="product-grid">
+                    <?php $productImage = $block->getImage($product, 'category_page_grid'); ?>
+                    <?php // Product Image ?>
+                    <a href="#<?= $product->getId() ?>-<?= $product->getUrlKey() ?>" class="product photo product-item-photo" tabindex="-1">
+                        <?= $productImage->toHtml(); ?>
+                    </a>
+                    <div class="product details product-item-details">
+                        <?php $_productNameStripped = $block->stripTags($product->getName(), null, true); ?>
+                        <div class="product name product-item-name">
+                            <a class="product-item-link" href="#<?= $product->getId() ?>-<?= $product->getUrlKey() ?>">
+                                <?= $helper->productAttribute($product, $product->getName(), 'name'); ?>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <?= ($iterator == count($productCollection) + 1) ? '</li>' : '' ?>
+            <?php endforeach; ?>
+        </ol>
+    </div>
+<?php endif; ?>
