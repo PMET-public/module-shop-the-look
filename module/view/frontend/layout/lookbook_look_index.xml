@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
     <head>
         <css src='MagentoEse_LookBook/css/lib/owl.carousel.min.css'/>
         <css src='MagentoEse_LookBook/css/lib/owl.theme.default.min.css'/>
@@ -11,5 +11,9 @@
         <referenceBlock name="category.description" remove="true"/>
         <referenceBlock name="category.cms" remove="true"/>
         <referenceBlock name="rss.link" remove="true"/>
+
+        <referenceContainer name="content">
+            <block name="lookbook" class="MagentoEse\LookBook\Block\LookBook" />
+        </referenceContainer>
     </body>
 </page>
