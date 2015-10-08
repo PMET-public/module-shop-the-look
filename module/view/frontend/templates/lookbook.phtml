@@ -25,26 +25,21 @@
     );
 ?>
 
-<div class="lookbook-view" data-mage-init='{
-        "lookbook": {
-            "carouselOptions": {
-                "items": 1,
-                "loop": true,
-                "singleItem": true,
-                "autoPlay": true,
-                "stopOnHover": true,
-                "navigation": false,
-                "responsive": true,
-                "autoHeight": true,
-                "mouseDrag": true,
-                "touchDrag": true
-            },
-            "popupOptions": {
-
-            }
+<div class="lookbook-view">
+    <div class="lookbook-carousel" data-mage-init='{
+        "lookbookCarousel": {
+            "items": 1,
+            "loop": true,
+            "singleItem": true,
+            "autoPlay": true,
+            "stopOnHover": true,
+            "navigation": false,
+            "responsive": true,
+            "autoHeight": true,
+            "mouseDrag": true,
+            "touchDrag": true
         }
     }'>
-    <div class="lookbook-carousel">
     <?php foreach($lookCollection as $look): ?>
         <div class="item">
             <div class='aspot-container'>
@@ -58,7 +53,7 @@
                     <div class='details'>
                         <div class='headline'><?= $look->getName() ?></div>
                         <div class='subtitle'><?= $look->getDescription() ?></div>
-                        <div class='button'><a href="#look-<?= $look->getId() ?>"><?= __('Shop This Look') ?></a></div>
+                        <div class='button shop-this-look'><a href="#look-<?= $look->getId() ?>"><?= __('Shop This Look') ?></a></div>
                     </div>
                 </div>
                 <?php /*
@@ -107,3 +102,12 @@
     </div>
     <div class="lookbook-popup"></div>
 </div>
+<script type="text/x-magento-init">
+    {
+        ".shop-this-look": {
+            "lookbookPopup": {
+
+            }
+        }
+    }
+</script>

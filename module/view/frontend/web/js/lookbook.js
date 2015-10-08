@@ -1,28 +1,18 @@
 define([
     'jquery',
-    'MagentoEse_LookBook/js/lib/owl.carousel',
-    'Magento_Ui/js/modal/modal',
     'mage/translate'
-], function ($, owlCarousel, modal){
+], function ($){
     'use strict';
 
-    $.widget('MagentoEse.lookbook.gallery', {
+    $.widget('lookbook.popup', {
         options: {
-            carouselOptions: {},
-            carouselSelector: '.lookbook-carousel',
-            popupOptions: {
-                type: 'popup',
-                title: $.mage.__('Shop this Look'),
-                modalClass: 'lookbook-popup',
-                responsive: true,
-                innerScroll: true,
-                buttons: []
-            },
-            popupSelector: '.lookbook-popup'
+            type: 'popup',
+            title: $.mage.__('Shop this Look'),
+            modalClass: 'lookbook-popup',
+            responsive: true,
+            innerScroll: true,
+            buttons: []
         },
-
-        carousel: null,
-        popup: null,
 
         /**
          * Create MagentoEse.lookBook widget
@@ -31,14 +21,10 @@ define([
         _create: function () {
             $(this.element); // wrap this.element
 
-            this.carousel = $(this.element.children(this.options.carouselSelector)[0]);
-            this.carousel.addClass('owl-carousel');
-            this.carousel.owlCarousel(this.options.carouselOptions);
-
-            this.popup = $(this.element.children(this.options.popupSelector)[0]);
-            modal(this.options.popupOptions, this.popup);
-        },
+            //modal(this.options, this.element);
+            //this.popup.showPopup();
+        }
     });
 
-    return $.MagentoEse.lookbook.gallery;
+    return $.lookbook.popup;
 });
