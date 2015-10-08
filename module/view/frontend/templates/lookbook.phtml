@@ -23,16 +23,28 @@
             'image'     => 'VD04-SN'
         )
     );
-
 ?>
 
-<div id="lookbook-popup" data-mage-init='{
-        "lookBook": {
-            "lookConfig": <?= $block->getLookBookJson() ?>
+<div class="lookbook-view" data-mage-init='{
+        "lookbook": {
+            "carouselOptions": {
+                "items": 1,
+                "loop": true,
+                "singleItem": true,
+                "autoPlay": true,
+                "stopOnHover": true,
+                "navigation": false,
+                "responsive": true,
+                "autoHeight": true,
+                "mouseDrag": true,
+                "touchDrag": true
+            },
+            "popupOptions": {
+
+            }
         }
     }'>
-</div>
-<div class="lookbook-gallery">
+    <div class="lookbook-carousel">
     <?php foreach($lookCollection as $look): ?>
         <div class="item">
             <div class='aspot-container'>
@@ -46,9 +58,10 @@
                     <div class='details'>
                         <div class='headline'><?= $look->getName() ?></div>
                         <div class='subtitle'><?= $look->getDescription() ?></div>
-                        <div class='button'><?= __('Shop This Look') ?></div>
+                        <div class='button'><a href="#look-<?= $look->getId() ?>"><?= __('Shop This Look') ?></a></div>
                     </div>
                 </div>
+                <?php /*
                 <div class='aspot-promo'>
                     <div class='promo'>
                         <div class='details'>
@@ -87,25 +100,10 @@
                         </div>
                     </div>
                 </div>
+ */ ?>
             </div>
         </div>
     <?php endforeach ?>
+    </div>
+    <div class="lookbook-popup"></div>
 </div>
-<script type="text/x-magento-init">
-    {
-        ".lookbook-gallery": {
-            "MagentoEse_LookBook/js/lookbook": {
-                "items": 1,
-                "loop": true,
-                "singleItem": true,
-                "autoPlay": true,
-                "stopOnHover": true,
-                "navigation": false,
-                "responsive": true,
-                "autoHeight": true,
-                "mouseDrag": true,
-                "touchDrag": true
-            }
-        }
-    }
-</script>
