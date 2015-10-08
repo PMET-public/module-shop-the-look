@@ -2,19 +2,17 @@
 
 namespace MagentoEse\LookBook\Model;
 
+use Magento\Framework\Event\Observer as EventObserver;
+
 class Observer
 {
-    protected $_verpageData;
-    protected $_registry = null;
-
-    public function __construct (
-        \Magento\Framework\Registry $registry
-    ) {
-        $this->_registry = $registry;
-    }
-
-    public function invoke(\Magento\Framework\Event\Observer $observer)
+    /**
+     * @param EventObserver $event
+     */
+    public function loadLayoutBefore(EventObserver $event)
     {
-        //die('works');
+        /** @var \Magento\Framework\View\LayoutInterface $layout */
+        $layout = $event->getLayout();
+        $layout->getUpdate()->addHandle('lookbook_look_index');
     }
 }
