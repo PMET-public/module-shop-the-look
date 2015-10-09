@@ -105,17 +105,8 @@
     <div class="lookbook-view" data-mage-init='{
             "Magento_Ui/js/modal/modal": {
                 "modalClass":"lookbook",
+                "trigger":".shop-this-look",
                 "buttons":[]
             }
         }'></div>
 </div>
-<script type="text/x-magento-init">
-    {
-        ".shop-this-look": {
-            "Magento_Ui/js/modal/modalToggle": {
-                "content":".lookbook-view",
-                "toggleEvent":"click"
-            }
-        }
-    }
-</script>
