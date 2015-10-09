@@ -53,7 +53,11 @@
                     <div class='details'>
                         <div class='headline'><?= $look->getName() ?></div>
                         <div class='subtitle'><?= $look->getDescription() ?></div>
-                        <div class='button shop-this-look'><a href="#look-<?= $look->getId() ?>"><?= __('Shop This Look') ?></a></div>
+                        <div class='button shop-this-look' data-mage-init='{
+                                "Magento_Ui/js/block-loader": ""
+                            }'>
+                            <?= __('Shop This Look') ?>
+                        </div>
                     </div>
                 </div>
                 <div class='aspot-promo'>
@@ -64,8 +68,8 @@
                         </div>
                         <div class='image'>
                             <picture>
-                                <source srcset='/pub/wysiwyg/venia/look/promo/<?= $options['promo1']['image'] ?>_main_sm.jpg", /pub/wysiwyg/venia/look/promo/<?= $options['promo1']['image'] ?>_main_sm@2x.jpg" 2x' media='(min-width: 771px)'>
-                                <img srcset='/pub/wysiwyg/venia/look/promo/<?= $options['promo1']['image'] ?>_main.jpg", /pub/wysiwyg/venia/look/promo/<?= $options['promo1']['image'] ?>_main@2x.jpg" 2x'>
+                                <source srcset='/pub/media/wysiwyg/venia/look/promo/<?= $options['promo1']['image'] ?>_main_sm.jpg, /pub/media/wysiwyg/venia/look/promo/<?= $options['promo1']['image'] ?>_main_sm@2x.jpg 2x' media='(min-width: 771px)'>
+                                <img srcset='/pub/media/wysiwyg/venia/look/promo/<?= $options['promo1']['image'] ?>_main.jpg, /pub/media/wysiwyg/venia/look/promo/<?= $options['promo1']['image'] ?>_main@2x.jpg 2x'>
                             </picture>
                         </div>
                     </div>
@@ -76,8 +80,8 @@
                         </div>
                         <div class='image'>
                             <picture>
-                                <source srcset='/pub/wysiwyg/venia/look/promo/<?= $options['promo2']['image'] ?>_main_sm.jpg", /pub/wysiwyg/venia/look/promo/<?= $options['promo2']['image'] ?>_main_sm@2x.jpg" 2x' media='(min-width: 771px)'>
-                                <img srcset='/pub/wysiwyg/venia/look/promo/<?= $options['promo2']['image'] ?>_main.jpg", /pub/wysiwyg/venia/look/promo/<?= $options['promo2']['image'] ?>_main@2x.jpg" 2x'>
+                                <source srcset='/pub/media/wysiwyg/venia/look/promo/<?= $options['promo2']['image'] ?>_main_sm.jpg, /pub/media/wysiwyg/venia/look/promo/<?= $options['promo2']['image'] ?>_main_sm@2x.jpg 2x' media='(min-width: 771px)'>
+                                <img srcset='/pub/media/wysiwyg/venia/look/promo/<?= $options['promo2']['image'] ?>_main.jpg, /pub/media/wysiwyg/venia/look/promo/<?= $options['promo2']['image'] ?>_main@2x.jpg 2x'>
                             </picture>
                         </div>
                     </div>
@@ -88,8 +92,8 @@
                         </div>
                         <div class='image'>
                             <picture>
-                                <source srcset='/pub/wysiwyg/venia/look/promo/<?= $options['promo3']['image'] ?>_main_sm.jpg", /pub/wysiwyg/venia/look/promo/<?= $options['promo3']['image'] ?>_main_sm@2x.jpg" 2x' media='(min-width: 771px)'>
-                                <img srcset='/pub/wysiwyg/venia/look/promo/<?= $options['promo3']['image'] ?>_main.jpg", /pub/wysiwyg/venia/look/promo/<?= $options['promo3']['image'] ?>_main@2x.jpg" 2x' >
+                                <source srcset='/pub/media/wysiwyg/venia/look/promo/<?= $options['promo3']['image'] ?>_main_sm.jpg, /pub/media/wysiwyg/venia/look/promo/<?= $options['promo3']['image'] ?>_main_sm@2x.jpg 2x' media='(min-width: 771px)'>
+                                <img srcset='/pub/media/wysiwyg/venia/look/promo/<?= $options['promo3']['image'] ?>_main.jpg, /pub/media/wysiwyg/venia/look/promo/<?= $options['promo3']['image'] ?>_main@2x.jpg 2x' >
                             </picture>
                         </div>
                     </div>
