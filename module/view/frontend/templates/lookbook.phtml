@@ -25,9 +25,9 @@
     );
 ?>
 
-<div class="lookbook-view">
+<div class="lookbook">
     <div class="lookbook-carousel" data-mage-init='{
-        "lookbookCarousel": {
+        "MagentoEse_LookBook::Carousel": {
             "items": 1,
             "loop": true,
             "singleItem": true,
@@ -100,13 +100,19 @@
         </div>
     <?php endforeach ?>
     </div>
-    <div class="lookbook-popup"></div>
+    <div class="lookbook-view" data-mage-init='{
+            "Magento_Ui/js/modal/modal": {
+                "modalClass":"lookbook",
+                "buttons":[]
+            }
+        }'></div>
 </div>
 <script type="text/x-magento-init">
     {
         ".shop-this-look": {
-            "lookbookPopup": {
-
+            "Magento_Ui/js/modal/modalToggle": {
+                "content":".lookbook-view",
+                "toggleEvent":"click"
             }
         }
     }
