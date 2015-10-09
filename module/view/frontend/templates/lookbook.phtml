@@ -45,10 +45,10 @@
             <div class='aspot-container'>
                 <div class='aspot-img'>
                     <picture>
-                        <source srcset='/pub/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $options['mainImage'] ?>_lg@2x.jpg"}}' media='(min-width: 1261px)'>
-                        <source srcset='/pub/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $options['mainImage'] ?>_lg.jpg"}}, /pub/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $options['mainImage'] ?>_lg@2x.jpg"}} 2x' media='(min-width: 771px)'>
-                        <source srcset='/pub/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $options['mainImage'] ?>_tab.jpg"}}, /pub/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $options['mainImage'] ?>_tab@2x.jpg"}} 2x' media='(min-width: 401px)'>
-                        <img srcset='/pub/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $options['mainImage'] ?>_mobi@2x.jpg"}} 2x'>
+                        <source srcset='/pub/media/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $options['mainImage'] ?>_lg@2x.jpg' media='(min-width: 1261px)'>
+                        <source srcset='/pub/media/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $options['mainImage'] ?>_lg.jpg, /pub/media/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $options['mainImage'] ?>_lg@2x.jpg 2x' media='(min-width: 771px)'>
+                        <source srcset='/pub/media/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $options['mainImage'] ?>_tab.jpg, /pub/media/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $options['mainImage'] ?>_tab@2x.jpg 2x' media='(min-width: 401px)'>
+                        <img srcset='/pub/media/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $options['mainImage'] ?>_mobi@2x.jpg 2x'>
                     </picture>
                     <div class='details'>
                         <div class='headline'><?= $look->getName() ?></div>
@@ -56,7 +56,6 @@
                         <div class='button shop-this-look'><a href="#look-<?= $look->getId() ?>"><?= __('Shop This Look') ?></a></div>
                     </div>
                 </div>
-                <?php /*
                 <div class='aspot-promo'>
                     <div class='promo'>
                         <div class='details'>
@@ -65,8 +64,8 @@
                         </div>
                         <div class='image'>
                             <picture>
-                                <source srcset='/pub/wysiwyg/venia/look/promo/<?= $options['promo1']['image'] ?>_main_sm.jpg"}}, /pub/wysiwyg/venia/look/promo/<?= $options['promo1']['image'] ?>_main_sm@2x.jpg"}} 2x' media='(min-width: 771px)'>
-                                <img srcset='/pub/wysiwyg/venia/look/promo/<?= $options['promo1']['image'] ?>_main.jpg"}}, /pub/wysiwyg/venia/look/promo/<?= $options['promo1']['image'] ?>_main@2x.jpg"}} 2x'>
+                                <source srcset='/pub/wysiwyg/venia/look/promo/<?= $options['promo1']['image'] ?>_main_sm.jpg", /pub/wysiwyg/venia/look/promo/<?= $options['promo1']['image'] ?>_main_sm@2x.jpg" 2x' media='(min-width: 771px)'>
+                                <img srcset='/pub/wysiwyg/venia/look/promo/<?= $options['promo1']['image'] ?>_main.jpg", /pub/wysiwyg/venia/look/promo/<?= $options['promo1']['image'] ?>_main@2x.jpg" 2x'>
                             </picture>
                         </div>
                     </div>
@@ -77,8 +76,8 @@
                         </div>
                         <div class='image'>
                             <picture>
-                                <source srcset='/pub/wysiwyg/venia/look/promo/<?= $options['promo2']['image'] ?>_main_sm.jpg"}}, /pub/wysiwyg/venia/look/promo/<?= $options['promo2']['image'] ?>_main_sm@2x.jpg"}} 2x' media='(min-width: 771px)'>
-                                <img srcset='/pub/wysiwyg/venia/look/promo/<?= $options['promo2']['image'] ?>_main.jpg"}}, /pub/wysiwyg/venia/look/promo/<?= $options['promo2']['image'] ?>_main@2x.jpg"}} 2x'>
+                                <source srcset='/pub/wysiwyg/venia/look/promo/<?= $options['promo2']['image'] ?>_main_sm.jpg", /pub/wysiwyg/venia/look/promo/<?= $options['promo2']['image'] ?>_main_sm@2x.jpg" 2x' media='(min-width: 771px)'>
+                                <img srcset='/pub/wysiwyg/venia/look/promo/<?= $options['promo2']['image'] ?>_main.jpg", /pub/wysiwyg/venia/look/promo/<?= $options['promo2']['image'] ?>_main@2x.jpg" 2x'>
                             </picture>
                         </div>
                     </div>
@@ -89,13 +88,12 @@
                         </div>
                         <div class='image'>
                             <picture>
-                                <source srcset='/pub/wysiwyg/venia/look/promo/<?= $options['promo3']['image'] ?>_main_sm.jpg"}}, /pub/wysiwyg/venia/look/promo/<?= $options['promo3']['image'] ?>_main_sm@2x.jpg"}} 2x' media='(min-width: 771px)'>
-                                <img srcset='/pub/wysiwyg/venia/look/promo/<?= $options['promo3']['image'] ?>_main.jpg"}}, /pub/wysiwyg/venia/look/promo/<?= $options['promo3']['image'] ?>_main@2x.jpg"}} 2x' >
+                                <source srcset='/pub/wysiwyg/venia/look/promo/<?= $options['promo3']['image'] ?>_main_sm.jpg", /pub/wysiwyg/venia/look/promo/<?= $options['promo3']['image'] ?>_main_sm@2x.jpg" 2x' media='(min-width: 771px)'>
+                                <img srcset='/pub/wysiwyg/venia/look/promo/<?= $options['promo3']['image'] ?>_main.jpg", /pub/wysiwyg/venia/look/promo/<?= $options['promo3']['image'] ?>_main@2x.jpg" 2x' >
                             </picture>
                         </div>
                     </div>
                 </div>
- */ ?>
             </div>
         </div>
     <?php endforeach ?>
