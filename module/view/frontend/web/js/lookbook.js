@@ -4,7 +4,7 @@ define([
 ], function ($){
     'use strict';
 
-    $.widget('lookbook.popup', {
+    $.widget('MagentoEse_LookBook.popup', {
         options: {
             type: 'popup',
             title: $.mage.__('Shop this Look'),
@@ -15,7 +15,7 @@ define([
         },
 
         /**
-         * Create MagentoEse.lookBook widget
+         * Create MagentoEse_LookBook.popup widget
          * @private
          */
         _create: function () {
@@ -26,5 +26,5 @@ define([
         }
     });
 
-    return $.lookbook.popup;
+    return $.MagentoEse_LookBook.popup;
 });

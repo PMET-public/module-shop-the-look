@@ -4,11 +4,11 @@ define([
 ], function ($) {
     'use strict';
 
-    $.widget('lookbook.carousel', {
+    $.widget('MagentoEse_LookBook.carousel', {
         options: {},
 
         /**
-         * Create MagentoEse.lookBook widget
+         * Create MagentoEse_LookBook.carousel widget
          * @private
          */
         _create: function () {
@@ -19,5 +19,5 @@ define([
         }
     });
 
-    return $.lookbook.carousel;
+    return $.MagentoEse_LookBook.carousel;
 });
