@@ -1,12 +1,22 @@
 define([
     'jquery',
+    'mage/translate',
     'matchMedia',
     'MagentoEse_LookBook/js/lib/owl.carousel',
     '!domReady'
 ], function ($, owlCarousel){
     'use strict';
 
-    $.widget('MagentoEse.lookBook', {
+    $.widget('lookbook.popup', {
+        options: {
+            type: 'popup',
+            title: $.mage.__('Shop this Look'),
+            modalClass: 'lookbook-popup',
+            responsive: true,
+            innerScroll: true,
+            buttons: []
+        },
+
         /**
          * Create MagentoEse.lookBook widget
          * @private
@@ -45,8 +55,7 @@ define([
                 owl.trigger('next.owl.carousel');
             });
         }
-
     });
 
-    return $.MagentoEse.lookBook;
+    return $.lookbook.popup;
 });

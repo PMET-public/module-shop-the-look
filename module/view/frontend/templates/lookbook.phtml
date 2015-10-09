@@ -1,9 +1,113 @@
 <?php
 /** @var \MagentoEse\LookBook\Block\LookBook $block */
 ?>
-<div id="lookbook-popup" data-mage-init='{
-        "magentoeseLookBook": {
-            "lookBooks": <?= $block->getLookBookJson() ?>
+<?php $lookCollection = $block->getCurrentCategory()->getChildrenCategories() ?>
+<?php
+
+    // TODO: pull this from where it should be pulled from
+    $options = array(
+        'mainImage' => '1_0498',
+        'promo1' => array(
+            'headline'  => 'Get Waisted',
+            'subtitle'  => 'Add a belt to any ensemble for a piece of figure-flattering flair. This is easy accessorizing with huge impact.',
+            'image'     => 'VA10-CT'
+        ),
+        'promo2' => array(
+            'headline'  => 'Carmina Earrings',
+            'subtitle'  => 'These gold & coral chandelier earrings are all about the drama. Take any simply-stated outfit from ho-hum to wow.',
+            'image'     => 'VA11-SG'
+        ),
+        'promo3' => array(
+            'headline'  => 'Felicia Maxi Dress',
+            'subtitle'  => 'Made for wherever the day may take you',
+            'image'     => 'VD04-SN'
+        )
+    );
+?>
+
+<div class="lookbook-view">
+    <div class="lookbook-carousel" data-mage-init='{
+        "lookbookCarousel": {
+            "items": 1,
+            "loop": true,
+            "singleItem": true,
+            "autoPlay": true,
+            "stopOnHover": true,
+            "navigation": false,
+            "responsive": true,
+            "autoHeight": true,
+            "mouseDrag": true,
+            "touchDrag": true
         }
     }'>
+    <?php foreach($lookCollection as $look): ?>
+        <div class="item">
+            <div class='aspot-container'>
+                <div class='aspot-img'>
+                    <picture>
+                        <source srcset='/pub/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $options['mainImage'] ?>_lg@2x.jpg"}}' media='(min-width: 1261px)'>
+                        <source srcset='/pub/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $options['mainImage'] ?>_lg.jpg"}}, /pub/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $options['mainImage'] ?>_lg@2x.jpg"}} 2x' media='(min-width: 771px)'>
+                        <source srcset='/pub/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $options['mainImage'] ?>_tab.jpg"}}, /pub/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $options['mainImage'] ?>_tab@2x.jpg"}} 2x' media='(min-width: 401px)'>
+                        <img srcset='/pub/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $options['mainImage'] ?>_mobi@2x.jpg"}} 2x'>
+                    </picture>
+                    <div class='details'>
+                        <div class='headline'><?= $look->getName() ?></div>
+                        <div class='subtitle'><?= $look->getDescription() ?></div>
+                        <div class='button shop-this-look'><a href="#look-<?= $look->getId() ?>"><?= __('Shop This Look') ?></a></div>
+                    </div>
+                </div>
+                <?php /*
+                <div class='aspot-promo'>
+                    <div class='promo'>
+                        <div class='details'>
+                            <div class='headline'><?= $options['promo1']['headline'] ?></div>
+                            <div class='subtitle'><?= $options['promo1']['subtitle'] ?></div>
+                        </div>
+                        <div class='image'>
+                            <picture>
+                                <source srcset='/pub/wysiwyg/venia/look/promo/<?= $options['promo1']['image'] ?>_main_sm.jpg"}}, /pub/wysiwyg/venia/look/promo/<?= $options['promo1']['image'] ?>_main_sm@2x.jpg"}} 2x' media='(min-width: 771px)'>
+                                <img srcset='/pub/wysiwyg/venia/look/promo/<?= $options['promo1']['image'] ?>_main.jpg"}}, /pub/wysiwyg/venia/look/promo/<?= $options['promo1']['image'] ?>_main@2x.jpg"}} 2x'>
+                            </picture>
+                        </div>
+                    </div>
+                    <div class='promo'>
+                        <div class='details'>
+                            <div class='headline'><?= $options['promo2']['headline'] ?></div>
+                            <div class='subtitle'><?= $options['promo2']['subtitle'] ?></div>
+                        </div>
+                        <div class='image'>
+                            <picture>
+                                <source srcset='/pub/wysiwyg/venia/look/promo/<?= $options['promo2']['image'] ?>_main_sm.jpg"}}, /pub/wysiwyg/venia/look/promo/<?= $options['promo2']['image'] ?>_main_sm@2x.jpg"}} 2x' media='(min-width: 771px)'>
+                                <img srcset='/pub/wysiwyg/venia/look/promo/<?= $options['promo2']['image'] ?>_main.jpg"}}, /pub/wysiwyg/venia/look/promo/<?= $options['promo2']['image'] ?>_main@2x.jpg"}} 2x'>
+                            </picture>
+                        </div>
+                    </div>
+                    <div class='promo'>
+                        <div class='details'>
+                            <div class='headline'><?= $options['promo3']['headline'] ?></div>
+                            <div class='subtitle'><?= $options['promo3']['subtitle'] ?></div>
+                        </div>
+                        <div class='image'>
+                            <picture>
+                                <source srcset='/pub/wysiwyg/venia/look/promo/<?= $options['promo3']['image'] ?>_main_sm.jpg"}}, /pub/wysiwyg/venia/look/promo/<?= $options['promo3']['image'] ?>_main_sm@2x.jpg"}} 2x' media='(min-width: 771px)'>
+                                <img srcset='/pub/wysiwyg/venia/look/promo/<?= $options['promo3']['image'] ?>_main.jpg"}}, /pub/wysiwyg/venia/look/promo/<?= $options['promo3']['image'] ?>_main@2x.jpg"}} 2x' >
+                            </picture>
+                        </div>
+                    </div>
+                </div>
+ */ ?>
+            </div>
+        </div>
+    <?php endforeach ?>
+    </div>
+    <div class="lookbook-popup"></div>
 </div>
+<script type="text/x-magento-init">
+    {
+        ".shop-this-look": {
+            "lookbookPopup": {
+
+            }
+        }
+    }
+</script>
