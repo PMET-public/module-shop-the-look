@@ -1,8 +1,8 @@
 var config = {
     "map": {
         "*": {
-            'MagentoEse_LookBook::Popup': 'MagentoEse_LookBook/js/lookbook',
-            'MagentoEse_LookBook::Carousel': 'MagentoEse_LookBook/js/carousel'
+            'MagentoEse_LookBook::lookbook': 'MagentoEse_LookBook/js/lookbook',
+            'MagentoEse_LookBook::carousel': 'MagentoEse_LookBook/js/carousel'
         }
     }
 };

@@ -163,18 +163,18 @@
     <div class="prev"></div>
     <div class="next"></div>
     <div class="lookbook-carousel" data-mage-init='{
-        "MagentoEse_LookBook::Carousel": {
-            "items": 1,
-            "loop": true,
-            "autoplay": false,
-            "autoplayHoverPause": true,
-            "responsive": true,
-            "autoHeight": true,
-            "mouseDrag": true,
-            "touchDrag": true,
-            "smartSpeed": 800
-        }
-    }'>
+            "MagentoEse_LookBook::carousel": {
+                "items": 1,
+                "loop": true,
+                "autoplay": false,
+                "autoplayHoverPause": true,
+                "responsive": true,
+                "autoHeight": true,
+                "mouseDrag": true,
+                "touchDrag": true,
+                "smartSpeed": 800
+            }
+        }'>
     <?php $index = 1; ?>
     <?php foreach($lookCollection as $look): ?>
         <?php $data = $look->load($look->getId()) ?>
@@ -188,9 +188,9 @@
                         <img srcset='/pub/media/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $options['product'.$index]['mainImage'] ?>_mobi@2x.jpg 2x'>
                     </picture>
                     <div class='details'>
-                        <div class='headline'><?= $data->getName() ?></div>
-                        <div class='subtitle'><?= $data->getDescription() ?></div>
-                        <div class='button shop-this-look'><?= __('Shop This Look') ?></div>
+                        <div class='headline'><?= $look->getName() ?></div>
+                        <div class='subtitle'><?= $look->getDescription() ?></div>
+                        <div class='button shop-this-look' data-load-url="<?= $block->getLookUrl($look) ?>"><?= __('Shop This Look') ?></div>
                     </div>
                 </div>
                 <div class='aspot-promo'>
@@ -237,10 +237,10 @@
     <?php endforeach ?>
     </div>
     <div class="lookbook-view" data-mage-init='{
-            "Magento_Ui/js/modal/modal": {
-                "modalClass":"lookbook",
-                "trigger":".shop-this-look",
-                "buttons":[]
+            "MagentoEse_LookBook::lookbook": {
+                    "modalClass":"lookbook",
+                    "trigger":".shop-this-look",
+                    "buttons":[]
             }
         }'>
     </div>
