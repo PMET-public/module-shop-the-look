@@ -3,6 +3,7 @@
 namespace MagentoEse\LookBook\Block;
 
 use Magento\Catalog\Block\Category\View;
+use Magento\Catalog\Model\Category;
 
 class LookBook extends View
 {
@@ -13,8 +14,8 @@ class LookBook extends View
         }
     }
 
-    public function getLookBookJson()
+    public function getLookUrl(Category $category)
     {
-        return json_encode([]);
+        return $this->getUrl('lookbook/look/view', ['id' => $category->getId()]);
     }
 }

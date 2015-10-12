@@ -190,7 +190,7 @@
                     <div class='details'>
                         <div class='headline'><?php echo $look->getName() ?></div>
                         <div class='subtitle'><?php echo $look->getDescription() ?></div>
-                        <div class='button shop-this-look'><?php echo __('Shop This Look') ?></div>
+                        <div class='button shop-this-look' data-load-url="<?= $block->getLookUrl($look) ?>"><?= __('Shop This Look') ?></div>
                     </div>
                 </div>
                 <div class='aspot-promo'>
@@ -216,10 +216,10 @@
     <?php endforeach ?>
     </div>
     <div class="lookbook-view" data-mage-init='{
-            "Magento_Ui/js/modal/modal": {
-                "modalClass":"lookbook",
-                "trigger":".shop-this-look",
-                "buttons":[]
+            "MagentoEse_LookBook::lookbook": {
+                    "modalClass":"lookbook",
+                    "trigger":".shop-this-look",
+                    "buttons":[]
             }
         }'>
     </div>
