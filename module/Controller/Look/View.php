@@ -2,9 +2,10 @@
 
 namespace MagentoEse\LookBook\Controller\Look;
 
+use Magento\Catalog\Controller\Category\View as CategoryView;
 use Magento\Framework\Controller\ResultFactory;
 
-class View extends \Magento\Catalog\Controller\Category\View
+class View extends CategoryView
 {
     public function execute()
     {
@@ -14,7 +15,7 @@ class View extends \Magento\Catalog\Controller\Category\View
         $category = $this->_initCategory();
         if ($category) {
             $page = $this->resultPageFactory->create();
-            $result->setContents($page->getLayout()->renderElement('lookbook.product.list'));
+            $result->setContents($page->getLayout()->renderElement('lookbook.view'));
         } else {
             $result->setHttpResponseCode(404);
         }
