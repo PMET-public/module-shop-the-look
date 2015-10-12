@@ -50,6 +50,7 @@
     transition-delay: 1s;
 }
 
+
 .lookbook-wrapper {
     .page-header {
         margin-bottom: 0 !important;
@@ -63,7 +64,7 @@
         max-width: initial;
         .column.main {
             margin: 0;
-            padding: 0;
+            padding: 0 !important;
             max-width: initial;
             position: relative;
             .lookbook-carousel {
@@ -103,9 +104,9 @@
                         padding-right: 20px;
                         padding-left: 20px;
                         .promo {
-                            -webkit-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.125);
-                            -moz-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.125);
-                            box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.125);
+                            -webkit-box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.125);
+                            -moz-box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.125);
+                            box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.125);
                             margin-right: 20px;
                             margin-top: 20px;
                             margin-bottom: 20px;
@@ -250,6 +251,7 @@
     }
 }
 
+
 // Greater than 768px, overrides anything less
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
     @height: 300px;
@@ -313,6 +315,8 @@
                                 flex: 2;
                             }
                             .image {
+                                align-self: initial;
+                                justify-content: initial;
                                 flex: 1;
                             }
                         }
