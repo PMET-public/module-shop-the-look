@@ -177,7 +177,7 @@
     }'>
     <?php $index = 1; ?>
     <?php foreach($lookCollection as $look): ?>
-        <?php $data = $look->load($look->getId()) ?>
+        <?php $look = $look->load($look->getId()) ?>
         <div class="item">
             <div class='aspot-container'>
                 <div class='aspot-img'>
@@ -188,48 +188,27 @@
                         <img srcset='/pub/media/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $options['product'.$index]['mainImage'] ?>_mobi@2x.jpg 2x'>
                     </picture>
                     <div class='details'>
-                        <div class='headline'><?= $data->getName() ?></div>
-                        <div class='subtitle'><?= $data->getDescription() ?></div>
-                        <div class='button shop-this-look'><?= __('Shop This Look') ?></div>
+                        <div class='headline'><?php echo $look->getName() ?></div>
+                        <div class='subtitle'><?php echo $look->getDescription() ?></div>
+                        <div class='button shop-this-look'><?php echo __('Shop This Look') ?></div>
                     </div>
                 </div>
                 <div class='aspot-promo'>
+                    <?php foreach($look->getProductCollection() as $product): ?>
+                    <?php $product = $product->load($product->getId()) ?>
                     <div class='promo'>
                         <div class='details'>
-                            <div class='headline'><?= $options['product'.$index]['promo1']['headline'] ?></div>
-                            <div class='subtitle'><?= $options['product'.$index]['promo1']['subtitle'] ?></div>
+                            <div class='headline'><?php echo $product->getLookBookHeading() ?></div>
+                            <div class='subtitle'><?php echo $product->getLookBookSubtitle() ?></div>
                         </div>
                         <div class='image'>
                             <picture>
-                                <source srcset='/pub/media/wysiwyg/venia/look/promo/<?= $options['product'.$index]['promo1']['image'] ?>_sm.jpg, /pub/media/wysiwyg/venia/look/promo/<?= $options['product'.$index]['promo1']['image'] ?>_sm@2x.jpg 2x' media='(min-width: 771px)'>
-                                <img srcset='/pub/media/wysiwyg/venia/look/promo/<?= $options['product'.$index]['promo1']['image'] ?>.jpg, /pub/media/wysiwyg/venia/look/promo/<?= $options['product'.$index]['promo1']['image'] ?>@2x.jpg 2x'>
+                                <source srcset='/pub/media/wysiwyg/venia/look/promo/<?php echo $product->getLookBookImage() ?>_sm.jpg, /pub/media/wysiwyg/venia/look/promo/<?php echo $product->getLookBookImage() ?>_sm@2x.jpg 2x' media='(min-width: 771px)'>
+                                <img srcset='/pub/media/wysiwyg/venia/look/promo/<?php echo $product->getLookBookImage() ?>.jpg, /pub/media/wysiwyg/venia/look/promo/<?php echo $product->getLookBookImage() ?>@2x.jpg 2x'>
                             </picture>
                         </div>
                     </div>
-                    <div class='promo'>
-                        <div class='details'>
-                            <div class='headline'><?= $options['product'.$index]['promo2']['headline'] ?></div>
-                            <div class='subtitle'><?= $options['product'.$index]['promo2']['subtitle'] ?></div>
-                        </div>
-                        <div class='image'>
-                            <picture>
-                                <source srcset='/pub/media/wysiwyg/venia/look/promo/<?= $options['product'.$index]['promo2']['image'] ?>_sm.jpg, /pub/media/wysiwyg/venia/look/promo/<?= $options['product'.$index]['promo2']['image'] ?>_sm@2x.jpg 2x' media='(min-width: 771px)'>
-                                <img srcset='/pub/media/wysiwyg/venia/look/promo/<?= $options['product'.$index]['promo2']['image'] ?>.jpg, /pub/media/wysiwyg/venia/look/promo/<?= $options['product'.$index]['promo2']['image'] ?>@2x.jpg 2x'>
-                            </picture>
-                        </div>
-                    </div>
-                    <div class='promo'>
-                        <div class='details'>
-                            <div class='headline'><?= $options['product'.$index]['promo3']['headline'] ?></div>
-                            <div class='subtitle'><?= $options['product'.$index]['promo3']['subtitle'] ?></div>
-                        </div>
-                        <div class='image'>
-                            <picture>
-                                <source srcset='/pub/media/wysiwyg/venia/look/promo/<?= $options['product'.$index]['promo3']['image'] ?>_sm.jpg, /pub/media/wysiwyg/venia/look/promo/<?= $options['product'.$index]['promo3']['image'] ?>_sm@2x.jpg 2x' media='(min-width: 771px)'>
-                                <img srcset='/pub/media/wysiwyg/venia/look/promo/<?= $options['product'.$index]['promo3']['image'] ?>.jpg, /pub/media/wysiwyg/venia/look/promo/<?= $options['product'.$index]['promo3']['image'] ?>@2x.jpg 2x' >
-                            </picture>
-                        </div>
-                    </div>
+                    <?php endforeach ?>
                 </div>
             </div>
         </div>
