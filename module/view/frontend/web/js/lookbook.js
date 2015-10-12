@@ -14,8 +14,7 @@ define([
 
         openModal: function () {
             if (this.options.loadUrl) {
-                var self = this;
-                self.openModal_super = self._super;
+                this.openModal_super = this._super;
 
                 $(':mage-loader').loader('show');
                 this.element.load(this.options.loadUrl, function () {
