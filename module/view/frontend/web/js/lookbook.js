@@ -31,13 +31,50 @@ define([
         }
     });
 
-    function lookbookLoadDetail(config, element)
-    {
-        $(element).load(config.loadUrl);
-    }
+    $.widget('MagentoEse_LookBook.lookbookLoadDetail', {
+        options: {
+            defer: true,
+            listenEvent: null,
+            loadUrl: null,
+            elementSelector: null
+        },
+
+        _create: function () {
+            if (!this.options.defer) {
+                this._load()
+            }
+
+            if (!this.options.loadUrl) {
+                this.options.loadUrl = this.element.data('load-url');
+            }
+
+            if (this.options.listenEvent) {
+                this.element.on(this.options.listenEvent, this._load.bind(this))
+            }
+        },
+
+        _load: function () {
+            if (this.options.loadUrl) {
+                var el = this.element;
+                if (this.options.elementSelector) {
+                    el = $(this.options.elementSelector);
+                }
+
+                if (this.options.defer) {
+                    $(':mage-loader').loader('show');
+                }
+
+                el.load(this.options.loadUrl, function () {
+                    if (this.options.defer) {
+                        $(':mage-loader').loader('hide');
+                    }
+                }.bind(this));
+            }
+        }
+    });
 
     return {
         "MagentoEse_LookBook::lookbook": $.MagentoEse_LookBook.lookbook,
-        "MagentoEse_LookBook::lookbookLoadDetail": lookbookLoadDetail
+        "MagentoEse_LookBook::lookbookLoadDetail": $.MagentoEse_LookBook.lookbookLoadDetail
     }
 });
