@@ -3,7 +3,7 @@
     <update handle="catalog_product_view"/>
 
     <body>
-        <container name="lookbook.product.info" htmlTag="div" htmlClass="lookbook-product-info" before="-"/>
+        <container name="lookbook.product.info"/>
 
         <move element="product.info.main" destination="lookbook.product.info" />
         <move element="product.info.media" destination="lookbook.product.info" />

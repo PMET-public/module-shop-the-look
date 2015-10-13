@@ -6,18 +6,18 @@
     <div class="prev"></div>
     <div class="next"></div>
     <div class="lookbook-carousel" data-mage-init='{
-        "MagentoEse_LookBook::carousel": {
-            "items": 1,
-            "loop": true,
-            "autoplay": false,
-            "autoplayHoverPause": true,
-            "responsive": true,
-            "autoHeight": true,
-            "mouseDrag": true,
-            "touchDrag": true,
-            "smartSpeed": 800
-        }
-    }'>
+            "MagentoEse_LookBook::carousel": {
+                "items": 1,
+                "loop": true,
+                "autoplay": false,
+                "autoplayHoverPause": true,
+                "responsive": true,
+                "autoHeight": true,
+                "mouseDrag": true,
+                "touchDrag": true,
+                "smartSpeed": 800
+            }
+        }'>
     <?php $index = 1; ?>
     <?php foreach($lookCollection as $look): ?>
         <?php $look->load($look->getId()) ?>

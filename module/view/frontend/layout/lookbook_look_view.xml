@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
     <body>
-        <block class="Magento\Catalog\Block\Product\ListProduct" name="lookbook.product.list" template="MagentoEse_LookBook::product/list.phtml"/>
+        <block class="MagentoEse\LookBook\Block\LookBook\View" name="lookbook.view" template="MagentoEse_LookBook::lookbook/view.phtml"/>
     </body>
 </page>

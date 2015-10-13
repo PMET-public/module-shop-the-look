@@ -2,10 +2,10 @@
 
 namespace MagentoEse\LookBook\Block;
 
-use Magento\Catalog\Block\Category\View;
+use Magento\Catalog\Block\Category\View as CategoryView;
 use Magento\Catalog\Model\Category;
 
-class LookBook extends View
+class LookBook extends CategoryView
 {
     public function _construct()
     {

@@ -6,15 +6,22 @@ define([
     'use strict';
 
     $.widget('MagentoEse_LookBook.lookbook', $.mage.modal, {
+
         toggleModal: function (event) {
             this.options.loadUrl = $(event.toElement).data('load-url');
             this._super();
         },
 
         openModal: function () {
-            this._super();
             if (this.options.loadUrl) {
-                this.element.load(this.options.loadUrl)
+                this.openModal_super = this._super;
+
+                $(':mage-loader').loader('show');
+                this.element.load(this.options.loadUrl, function () {
+                    $.mage.init();
+                    $(':mage-loader').loader('hide');
+                    this.openModal_super();
+                }.bind(this))
             }
         },
 
@@ -24,5 +31,50 @@ define([
         }
     });
 
-    return $.MagentoEse_LookBook.lookbook;
+    $.widget('MagentoEse_LookBook.lookbookLoadDetail', {
+        options: {
+            defer: true,
+            listenEvent: null,
+            loadUrl: null,
+            elementSelector: null
+        },
+
+        _create: function () {
+            if (!this.options.defer) {
+                this._load()
+            }
+
+            if (!this.options.loadUrl) {
+                this.options.loadUrl = this.element.data('load-url');
+            }
+
+            if (this.options.listenEvent) {
+                this.element.on(this.options.listenEvent, this._load.bind(this))
+            }
+        },
+
+        _load: function () {
+            if (this.options.loadUrl) {
+                var el = this.element;
+                if (this.options.elementSelector) {
+                    el = $(this.options.elementSelector);
+                }
+
+                if (this.options.defer) {
+                    $(':mage-loader').loader('show');
+                }
+
+                el.load(this.options.loadUrl, function () {
+                    if (this.options.defer) {
+                        $(':mage-loader').loader('hide');
+                    }
+                }.bind(this));
+            }
+        }
+    });
+
+    return {
+        "MagentoEse_LookBook::lookbook": $.MagentoEse_LookBook.lookbook,
+        "MagentoEse_LookBook::lookbookLoadDetail": $.MagentoEse_LookBook.lookbookLoadDetail
+    }
 });
