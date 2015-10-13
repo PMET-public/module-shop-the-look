@@ -45,7 +45,6 @@ class InstallData implements InstallDataInterface
     {
         /** @var EavSetup $eavSetup */
         $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
-        $entityTypeId = $eavSetup->getEntityTypeId(Product::ENTITY);
 
         /**
          * Add attributes to the eav/attribute

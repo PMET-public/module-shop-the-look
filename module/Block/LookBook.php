@@ -9,6 +9,7 @@ use Magento\Catalog\Model\Layer\Resolver;
 use Magento\Catalog\Model\Resource\Product\CollectionFactory as ProductCollectionFactory;
 use Magento\Framework\DB\Select;
 use Magento\Framework\Registry;
+use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\Template\Context;
 
 class LookBook extends CategoryView
@@ -67,6 +68,12 @@ class LookBook extends CategoryView
         return $this->lookCollection;
     }
 
+    /**
+     * Returns sorted array of products belonging to given look with a position of 1 or greater
+     *
+     * @param Category $category
+     * @return array
+     */
     public function getSortedPromosByLook(Category $category)
     {
         if ($this->sortedPromos === null) {
@@ -100,8 +107,24 @@ class LookBook extends CategoryView
         return isset($this->sortedPromos[$category->getId()]) ? $this->sortedPromos[$category->getId()] : [];
     }
 
+    /**
+     * Returns data load URL for look view modal
+     *
+     * @param Category $category
+     * @return string
+     */
     public function getLookViewUrl(Category $category)
     {
         return $this->getUrl('lookbook/look/view', ['id' => $category->getId()]);
+    }
+
+    public function getBaseMediaUrl()
+    {
+        return $this->getCurrentCategory()->getStore()->getBaseUrl(UrlInterface::URL_TYPE_MEDIA) . 'lookbook/look/';
+    }
+
+    public function getBasePromoMediaUrl()
+    {
+        return $this->getCurrentCategory()->getStore()->getBaseUrl(UrlInterface::URL_TYPE_MEDIA) . 'lookbook/promo/';
     }
 }
