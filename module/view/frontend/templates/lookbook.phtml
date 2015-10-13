@@ -2,168 +2,11 @@
 /** @var \MagentoEse\LookBook\Block\LookBook $block */
 ?>
 <?php $lookCollection = $block->getCurrentCategory()->getChildrenCategories() ?>
-<?php
-
-    // TODO: pull this from where it should be pulled from
-    $options = array(
-        'product1' => array(
-            'mainImage' => '1_0498',
-            'promo1' => array(
-                'headline'  => 'Get Waisted',
-                'subtitle'  => 'Add a belt to any ensemble for a piece of figure-flattering flair. This is easy accessorizing with huge impact.',
-                'image'     => 'VA10-CT_main'
-            ),
-            'promo2' => array(
-                'headline'  => 'Carmina Earrings',
-                'subtitle'  => 'These gold & coral chandelier earrings are all about the drama. Take any simply-stated outfit from ho-hum to wow.',
-                'image'     => 'VA11-SG_main'
-            ),
-            'promo3' => array(
-                'headline'  => 'Felicia Maxi Dress',
-                'subtitle'  => 'Made for wherever the day may take you',
-                'image'     => 'VD04-SN_alt1'
-            )
-        ),
-        'product2' => array(
-            'mainImage' => '6_1350',
-            'details' => array(
-                'headline' => 'Retire your LBD',
-                'subtitle' => 'New sophistication. Classic style.'
-            ),
-            'promo1' => array(
-                'headline'  => 'Augusta Earrings',
-                'subtitle'  => 'Keep your cool in every situation. These silver chandelier earrings feature blues from ocean to sky.',
-                'image'     => 'VA12-TS_main'
-            ),
-            'promo2' => array(
-                'headline'  => 'Silver Amor Bangle Set',
-                'subtitle'  => 'Made for mixing & matching, these bangles can be worn simply or with additional bracelets for a bolder look.',
-                'image'     => 'VA22-SI_main'
-            ),
-            'promo3' => array(
-                'headline'  => 'Flora Tank Dress',
-                'subtitle'  => 'Loves to be the center of attention',
-                'image'     => 'VD06-MI_alt1'
-            )
-        ),
-        'product3' => array(
-            'mainImage' => '3_0943',
-            'details' => array(
-                'headline' => 'Skirt the Issue',
-                'subtitle' => 'Lightweight & fun layering options'
-            ),
-            'promo1' => array(
-                'headline'  => 'Helena Cardigan',
-                'subtitle'  => 'The soft lines of this sweater are understated yet elegant. Great for keeping you warm without feeling constricted.',
-                'image'     => 'VSW09-NA_back'
-            ),
-            'promo2' => array(
-                'headline'  => 'Carmina Necklace',
-                'subtitle'  => 'A medley of brightly colored glass seed beads offers the perfect embellishment for every outfit.',
-                'image'     => 'VA13-SG_main'
-            ),
-            'promo3' => array(
-                'headline'  => 'Tatiana Skirt',
-                'subtitle'  => 'Just plain flirty and fun',
-                'image'     => 'VSK08-RP_main'
-            )
-        ),
-        'product4' => array(
-            'mainImage' => '3_0943',
-            'details' => array(
-                'headline' => 'Skirt the Issue',
-                'subtitle' => 'Lightweight & fun layering options'
-            ),
-            'promo1' => array(
-                'headline'  => 'Helena Cardigan',
-                'subtitle'  => 'The soft lines of this sweater are understated yet elegant. Great for keeping you warm without feeling constricted.',
-                'image'     => 'VSW09-NA_back'
-            ),
-            'promo2' => array(
-                'headline'  => 'Carmina Necklace',
-                'subtitle'  => 'A medley of brightly colored glass seed beads offers the perfect embellishment for every outfit.',
-                'image'     => 'VA13-SG_main'
-            ),
-            'promo3' => array(
-                'headline'  => 'Tatiana Skirt',
-                'subtitle'  => 'Just plain flirty and fun',
-                'image'     => 'VSK08-RP_main'
-            )
-        ),
-        'product5' => array(
-            'mainImage' => '3_0943',
-            'details' => array(
-                'headline' => 'Skirt the Issue',
-                'subtitle' => 'Lightweight & fun layering options'
-            ),
-            'promo1' => array(
-                'headline'  => 'Helena Cardigan',
-                'subtitle'  => 'The soft lines of this sweater are understated yet elegant. Great for keeping you warm without feeling constricted.',
-                'image'     => 'VSW09-NA_back'
-            ),
-            'promo2' => array(
-                'headline'  => 'Carmina Necklace',
-                'subtitle'  => 'A medley of brightly colored glass seed beads offers the perfect embellishment for every outfit.',
-                'image'     => 'VA13-SG_main'
-            ),
-            'promo3' => array(
-                'headline'  => 'Tatiana Skirt',
-                'subtitle'  => 'Just plain flirty and fun',
-                'image'     => 'VSK08-RP_main'
-            )
-        ),
-        'product6' => array(
-            'mainImage' => '3_0943',
-            'details' => array(
-                'headline' => 'Skirt the Issue',
-                'subtitle' => 'Lightweight & fun layering options'
-            ),
-            'promo1' => array(
-                'headline'  => 'Helena Cardigan',
-                'subtitle'  => 'The soft lines of this sweater are understated yet elegant. Great for keeping you warm without feeling constricted.',
-                'image'     => 'VSW09-NA_back'
-            ),
-            'promo2' => array(
-                'headline'  => 'Carmina Necklace',
-                'subtitle'  => 'A medley of brightly colored glass seed beads offers the perfect embellishment for every outfit.',
-                'image'     => 'VA13-SG_main'
-            ),
-            'promo3' => array(
-                'headline'  => 'Tatiana Skirt',
-                'subtitle'  => 'Just plain flirty and fun',
-                'image'     => 'VSK08-RP_main'
-            )
-        ),
-        'product7' => array(
-            'mainImage' => '3_0943',
-            'details' => array(
-                'headline' => 'Skirt the Issue',
-                'subtitle' => 'Lightweight & fun layering options'
-            ),
-            'promo1' => array(
-                'headline'  => 'Helena Cardigan',
-                'subtitle'  => 'The soft lines of this sweater are understated yet elegant. Great for keeping you warm without feeling constricted.',
-                'image'     => 'VSW09-NA_back'
-            ),
-            'promo2' => array(
-                'headline'  => 'Carmina Necklace',
-                'subtitle'  => 'A medley of brightly colored glass seed beads offers the perfect embellishment for every outfit.',
-                'image'     => 'VA13-SG_main'
-            ),
-            'promo3' => array(
-                'headline'  => 'Tatiana Skirt',
-                'subtitle'  => 'Just plain flirty and fun',
-                'image'     => 'VSK08-RP_main'
-            )
-        )
-    );
-?>
-
 <div class="lookbook">
     <div class="prev"></div>
     <div class="next"></div>
     <div class="lookbook-carousel" data-mage-init='{
-        "MagentoEse_LookBook::Carousel": {
+        "MagentoEse_LookBook::carousel": {
             "items": 1,
             "loop": true,
             "autoplay": false,
@@ -177,19 +20,19 @@
     }'>
     <?php $index = 1; ?>
     <?php foreach($lookCollection as $look): ?>
-        <?php $look = $look->load($look->getId()) ?>
+        <?php $look->load($look->getId()) ?>
         <div class="item">
             <div class='aspot-container'>
                 <div class='aspot-img'>
                     <picture>
-                        <source srcset='/pub/media/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $options['product'.$index]['mainImage'] ?>_lg@2x.jpg' media='(min-width: 1261px)'>
-                        <source srcset='/pub/media/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $options['product'.$index]['mainImage'] ?>_lg.jpg, /pub/media/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $options['product'.$index]['mainImage'] ?>_lg@2x.jpg 2x' media='(min-width: 771px)'>
-                        <source srcset='/pub/media/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $options['product'.$index]['mainImage'] ?>_tab.jpg, /pub/media/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $options['product'.$index]['mainImage'] ?>_tab@2x.jpg 2x' media='(min-width: 401px)'>
-                        <img srcset='/pub/media/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $options['product'.$index]['mainImage'] ?>_mobi@2x.jpg 2x'>
+                        <source srcset='/pub/media/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $look->getLookBookMainImage() ?>_lg@2x.jpg' media='(min-width: 1261px)'>
+                        <source srcset='/pub/media/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $look->getLookBookMainImage() ?>_lg.jpg, /pub/media/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $look->getLookBookMainImage() ?>_lg@2x.jpg 2x' media='(min-width: 771px)'>
+                        <source srcset='/pub/media/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $look->getLookBookMainImage() ?>_tab.jpg, /pub/media/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $look->getLookBookMainImage() ?>_tab@2x.jpg 2x' media='(min-width: 401px)'>
+                        <img srcset='/pub/media/wysiwyg/venia/look/aspot/VENIA_Outfit-<?= $look->getLookBookMainImage() ?>_mobi@2x.jpg 2x'>
                     </picture>
                     <div class='details'>
-                        <div class='headline'><?php echo $look->getName() ?></div>
-                        <div class='subtitle'><?php echo $look->getDescription() ?></div>
+                        <div class='headline'><?= $look->getName() ?></div>
+                        <div class='subtitle'><?= $look->getDescription() ?></div>
                         <div class='button shop-this-look' data-load-url="<?= $block->getLookUrl($look) ?>"><?= __('Shop This Look') ?></div>
                     </div>
                 </div>
@@ -198,13 +41,13 @@
                     <?php $product = $product->load($product->getId()) ?>
                     <div class='promo'>
                         <div class='details'>
-                            <div class='headline'><?php echo $product->getLookBookHeading() ?></div>
-                            <div class='subtitle'><?php echo $product->getLookBookSubtitle() ?></div>
+                            <div class='headline'><?= $product->getLookBookHeadline() ?></div>
+                            <div class='subtitle'><?= $product->getLookBookSubtitle() ?></div>
                         </div>
                         <div class='image'>
                             <picture>
-                                <source srcset='/pub/media/wysiwyg/venia/look/promo/<?php echo $product->getLookBookImage() ?>_sm.jpg, /pub/media/wysiwyg/venia/look/promo/<?php echo $product->getLookBookImage() ?>_sm@2x.jpg 2x' media='(min-width: 771px)'>
-                                <img srcset='/pub/media/wysiwyg/venia/look/promo/<?php echo $product->getLookBookImage() ?>.jpg, /pub/media/wysiwyg/venia/look/promo/<?php echo $product->getLookBookImage() ?>@2x.jpg 2x'>
+                                <source srcset='/pub/media/wysiwyg/venia/look/promo/<?= $product->getLookBookImage() ?>_sm.jpg, /pub/media/wysiwyg/venia/look/promo/<?= $product->getLookBookImage() ?>_sm@2x.jpg 2x' media='(min-width: 771px)'>
+                                <img srcset='/pub/media/wysiwyg/venia/look/promo/<?= $product->getLookBookImage() ?>.jpg, /pub/media/wysiwyg/venia/look/promo/<?= $product->getLookBookImage() ?>@2x.jpg 2x'>
                             </picture>
                         </div>
                     </div>

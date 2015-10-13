@@ -43,9 +43,6 @@ class InstallData implements InstallDataInterface
         /** @var EavSetup $eavSetup */
         $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
         $entityTypeId = $eavSetup->getEntityTypeId(\Magento\Catalog\Model\Product::ENTITY);
-        $attributeSetId = $eavSetup->getAttributeSetId($entityTypeId, 'Default');
-
-        $eavSetup->addAttributeGroup($entityTypeId, $attributeSetId, 'Look Book', 8);
 
         /**
          * Add attributes to the eav/attribute
@@ -59,7 +56,7 @@ class InstallData implements InstallDataInterface
                 'input' => 'text',
                 'required' => false,
                 'sort_order' => 30,
-                'global' => \Magento\Catalog\Model\Resource\Eav\Attribute::SCOPE_WEBSITE,
+                'global' => \Magento\Catalog\Model\Resource\Eav\Attribute::SCOPE_STORE,
                 'group' => 'Product Details',
             ]
         );
@@ -73,7 +70,7 @@ class InstallData implements InstallDataInterface
                 'input' => 'text',
                 'required' => false,
                 'sort_order' => 35,
-                'global' => \Magento\Catalog\Model\Resource\Eav\Attribute::SCOPE_WEBSITE,
+                'global' => \Magento\Catalog\Model\Resource\Eav\Attribute::SCOPE_STORE,
                 'group' => 'Product Details',
             ]
         );
@@ -87,7 +84,7 @@ class InstallData implements InstallDataInterface
                 'input' => 'text',
                 'required' => false,
                 'sort_order' => 40,
-                'global' => \Magento\Catalog\Model\Resource\Eav\Attribute::SCOPE_WEBSITE,
+                'global' => \Magento\Catalog\Model\Resource\Eav\Attribute::SCOPE_STORE,
                 'group' => 'Product Details',
             ]
         );
@@ -101,7 +98,7 @@ class InstallData implements InstallDataInterface
                 'input' => 'text',
                 'required' => false,
                 'sort_order' => 20,
-                'global' => \Magento\Catalog\Model\Resource\Eav\Attribute::SCOPE_WEBSITE,
+                'global' => \Magento\Catalog\Model\Resource\Eav\Attribute::SCOPE_STORE,
                 'group' => 'General Information'
             ]
         );
