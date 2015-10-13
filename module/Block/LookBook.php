@@ -3,11 +3,34 @@
 namespace MagentoEse\LookBook\Block;
 
 use Magento\Catalog\Block\Category\View as CategoryView;
+use Magento\Catalog\Helper\Category as CategoryHelper;
 use Magento\Catalog\Model\Category;
+use Magento\Catalog\Model\Layer\Resolver;
+use Magento\Catalog\Model\Resource\Product\CollectionFactory as ProductCollectionFactory;
 use Magento\Framework\DB\Select;
+use Magento\Framework\Registry;
+use Magento\Framework\View\Element\Template\Context;
 
 class LookBook extends CategoryView
 {
+    protected $lookCollection;
+
+    protected $sortedPromos;
+
+    protected $productCollectionFactory;
+
+    public function __construct(
+        Context $context,
+        Resolver $layerResolver,
+        Registry $registry,
+        CategoryHelper $categoryHelper,
+        ProductCollectionFactory $productCollectionFactory,
+        array $data = []
+    ) {
+        $this->productCollectionFactory = $productCollectionFactory;
+        parent::__construct($context, $layerResolver, $registry, $categoryHelper, $data);
+    }
+
     public function _construct()
     {
         if (!$this->hasTemplate()) {
@@ -23,25 +46,61 @@ class LookBook extends CategoryView
      */
     public function getLookCollection()
     {
-        $category = $this->getCurrentCategory();
+        if ($this->lookCollection === null) {
+            $category = $this->getCurrentCategory();
 
-        /* @var $collection \Magento\Catalog\Model\Resource\Category\Collection */
-        $collection = $category->getCollection();
-        $collection->addAttributeToSelect('url_key')
-            ->addAttributeToSelect('name')
-            ->addAttributeToSelect('description')
-            ->addAttributeToSelect('look_book_main_image')
-            ->addAttributeToSelect('all_children')
-            ->addAttributeToSelect('is_anchor')
-            ->addAttributeToFilter('is_active', 1)
-            ->addIdFilter($category->getChildren())
-            ->setOrder('position', Select::SQL_ASC)
-            ->joinUrlRewrite();
+            /* @var $collection \Magento\Catalog\Model\Resource\Category\Collection */
+            $collection = $category->getCollection();
+            $collection->addAttributeToSelect('url_key')
+                ->addAttributeToSelect('name')
+                ->addAttributeToSelect('description')
+                ->addAttributeToSelect('look_book_main_image')
+                ->addAttributeToSelect('all_children')
+                ->addAttributeToSelect('is_anchor')
+                ->addAttributeToFilter('is_active', 1)
+                ->addIdFilter($category->getChildren())
+                ->setOrder('position', Select::SQL_ASC)
+                ->joinUrlRewrite();
 
-        return $collection;
+            $this->lookCollection = $collection;
+        }
+        return $this->lookCollection;
     }
 
-    public function getLookUrl(Category $category)
+    public function getSortedPromosByLook(Category $category)
+    {
+        if ($this->sortedPromos === null) {
+            $lookCollection = $this->getLookCollection();
+            $loadedProductsFilter = [];
+
+            /** @var Category $look */
+            foreach ($lookCollection as $look) {
+                $loadedProductsFilter = array_merge($loadedProductsFilter, array_keys($look->getProductsPosition()));
+            }
+
+            $productCollection = $this->productCollectionFactory->create()
+                ->setStoreId($category->getStoreId())
+                ->addAttributeToSelect('look_book_image')
+                ->addAttributeToSelect('look_book_subtitle')
+                ->addAttributeToSelect('look_book_headline')
+                ->addIdFilter($loadedProductsFilter);
+
+            foreach ($lookCollection as $look) {
+                $this->sortedPromos[$look->getId()] = [];
+                $position = $look->getProductsPosition();
+
+                foreach ($productCollection as $product) {
+                    if (isset($position[$product->getId()]) && $position[$product->getId()] > 0) {
+                        $this->sortedPromos[$look->getId()][$position[$product->getId()]] = $product;
+                    }
+                }
+                ksort($this->sortedPromos[$look->getId()]);
+            }
+        }
+        return isset($this->sortedPromos[$category->getId()]) ? $this->sortedPromos[$category->getId()] : [];
+    }
+
+    public function getLookViewUrl(Category $category)
     {
         return $this->getUrl('lookbook/look/view', ['id' => $category->getId()]);
     }

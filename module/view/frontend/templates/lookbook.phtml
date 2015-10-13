@@ -18,8 +18,8 @@
                 "smartSpeed": 800
             }
         }'>
-    <?php $index = 1; ?>
     <?php foreach($lookCollection as $look): ?>
+        <?php $sortedPromos = $block->getSortedPromosByLook($look) ?>
         <div class="item">
             <div class='aspot-container'>
                 <div class='aspot-img'>
@@ -32,21 +32,20 @@
                     <div class='details'>
                         <div class='headline'><?= $look->getName() ?></div>
                         <div class='subtitle'><?= $look->getDescription() ?></div>
-                        <div class='button shop-this-look' data-load-url="<?= $block->getLookUrl($look) ?>"><?= __('Shop This Look') ?></div>
+                        <div class='button shop-this-look' data-load-url="<?= $block->getLookViewUrl($look) ?>"><?= __('Shop This Look') ?></div>
                     </div>
                 </div>
                 <div class='aspot-promo'>
-                    <?php foreach($look->getProductCollection() as $product): ?>
-                    <?php $product = $product->load($product->getId()) ?>
+                    <?php foreach($sortedPromos as $promo): ?>
                     <div class='promo'>
                         <div class='details'>
-                            <div class='headline'><?= $product->getLookBookHeadline() ?></div>
-                            <div class='subtitle'><?= $product->getLookBookSubtitle() ?></div>
+                            <div class='headline'><?= $promo->getLookBookHeadline() ?></div>
+                            <div class='subtitle'><?= $promo->getLookBookSubtitle() ?></div>
                         </div>
                         <div class='image'>
                             <picture>
-                                <source srcset='/pub/media/wysiwyg/venia/look/promo/<?= $product->getLookBookImage() ?>_sm.jpg, /pub/media/wysiwyg/venia/look/promo/<?= $product->getLookBookImage() ?>_sm@2x.jpg 2x' media='(min-width: 771px)'>
-                                <img srcset='/pub/media/wysiwyg/venia/look/promo/<?= $product->getLookBookImage() ?>.jpg, /pub/media/wysiwyg/venia/look/promo/<?= $product->getLookBookImage() ?>@2x.jpg 2x'>
+                                <source srcset='/pub/media/wysiwyg/venia/look/promo/<?= $promo->getLookBookImage() ?>_sm.jpg, /pub/media/wysiwyg/venia/look/promo/<?= $promo->getLookBookImage() ?>_sm@2x.jpg 2x' media='(min-width: 771px)'>
+                                <img srcset='/pub/media/wysiwyg/venia/look/promo/<?= $promo->getLookBookImage() ?>.jpg, /pub/media/wysiwyg/venia/look/promo/<?= $promo->getLookBookImage() ?>@2x.jpg 2x'>
                             </picture>
                         </div>
                     </div>
@@ -54,7 +53,6 @@
                 </div>
             </div>
         </div>
-        <?php $index++; ?>
     <?php endforeach ?>
     </div>
     <div class="lookbook-view" data-mage-init='{
