@@ -6,6 +6,9 @@
 
 namespace MagentoEse\LookBook\Setup;
 
+use Magento\Catalog\Model\Category;
+use Magento\Catalog\Model\Product;
+use Magento\Catalog\Model\Resource\Eav\Attribute;
 use Magento\Eav\Setup\EavSetup;
 use Magento\Eav\Setup\EavSetupFactory;
 use Magento\Framework\Setup\InstallDataInterface;
@@ -42,13 +45,13 @@ class InstallData implements InstallDataInterface
     {
         /** @var EavSetup $eavSetup */
         $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
-        $entityTypeId = $eavSetup->getEntityTypeId(\Magento\Catalog\Model\Product::ENTITY);
+        $entityTypeId = $eavSetup->getEntityTypeId(Product::ENTITY);
 
         /**
          * Add attributes to the eav/attribute
          */
         $eavSetup->addAttribute(
-            \Magento\Catalog\Model\Product::ENTITY,
+            Product::ENTITY,
             'look_book_headline',
             [
                 'type' => 'varchar',
@@ -56,13 +59,13 @@ class InstallData implements InstallDataInterface
                 'input' => 'text',
                 'required' => false,
                 'sort_order' => 30,
-                'global' => \Magento\Catalog\Model\Resource\Eav\Attribute::SCOPE_STORE,
+                'global' => Attribute::SCOPE_STORE,
                 'group' => 'Product Details',
             ]
         );
 
         $eavSetup->addAttribute(
-            \Magento\Catalog\Model\Product::ENTITY,
+            Product::ENTITY,
             'look_book_subtitle',
             [
                 'type' => 'varchar',
@@ -70,13 +73,13 @@ class InstallData implements InstallDataInterface
                 'input' => 'text',
                 'required' => false,
                 'sort_order' => 35,
-                'global' => \Magento\Catalog\Model\Resource\Eav\Attribute::SCOPE_STORE,
+                'global' => Attribute::SCOPE_STORE,
                 'group' => 'Product Details',
             ]
         );
 
         $eavSetup->addAttribute(
-            \Magento\Catalog\Model\Product::ENTITY,
+            Product::ENTITY,
             'look_book_image',
             [
                 'type' => 'varchar',
@@ -84,13 +87,13 @@ class InstallData implements InstallDataInterface
                 'input' => 'text',
                 'required' => false,
                 'sort_order' => 40,
-                'global' => \Magento\Catalog\Model\Resource\Eav\Attribute::SCOPE_STORE,
+                'global' => Attribute::SCOPE_STORE,
                 'group' => 'Product Details',
             ]
         );
 
         $eavSetup->addAttribute(
-            \Magento\Catalog\Model\Category::ENTITY,
+            Category::ENTITY,
             'look_book_main_image',
             [
                 'type' => 'varchar',
@@ -98,7 +101,7 @@ class InstallData implements InstallDataInterface
                 'input' => 'text',
                 'required' => false,
                 'sort_order' => 20,
-                'global' => \Magento\Catalog\Model\Resource\Eav\Attribute::SCOPE_STORE,
+                'global' => Attribute::SCOPE_STORE,
                 'group' => 'General Information'
             ]
         );

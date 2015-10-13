@@ -1,7 +1,7 @@
 <?php
 /** @var \MagentoEse\LookBook\Block\LookBook $block */
 ?>
-<?php $lookCollection = $block->getCurrentCategory()->getChildrenCategories() ?>
+<?php $lookCollection = $block->getLookCollection() ?>
 <div class="lookbook">
     <div class="prev"></div>
     <div class="next"></div>
@@ -20,7 +20,6 @@
         }'>
     <?php $index = 1; ?>
     <?php foreach($lookCollection as $look): ?>
-        <?php $look->load($look->getId()) ?>
         <div class="item">
             <div class='aspot-container'>
                 <div class='aspot-img'>
