@@ -4,9 +4,7 @@
 
     <body>
         <container name="lookbook.product.info"/>
-
         <move element="product.info.main" destination="lookbook.product.info" />
         <move element="product.info.media" destination="lookbook.product.info" />
-        <move element="product.info.description" destination="lookbook.product.info" />
     </body>
 </page>

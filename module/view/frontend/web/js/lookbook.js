@@ -6,16 +6,13 @@ define([
     'use strict';
 
     $.widget('MagentoEse_LookBook.lookbook', $.mage.modal, {
-
         toggleModal: function (event) {
             this.options.loadUrl = $(event.toElement).data('load-url');
             this._super();
         },
-
         openModal: function () {
             if (this.options.loadUrl) {
                 this.openModal_super = this._super;
-
                 $(':mage-loader').loader('show');
                 this.element.load(this.options.loadUrl, function () {
                     $.mage.init();
@@ -24,7 +21,6 @@ define([
                 }.bind(this))
             }
         },
-
         closeModal: function () {
             this._super();
             this.element.html('');
@@ -36,7 +32,8 @@ define([
             defer: true,
             listenEvent: null,
             loadUrl: null,
-            elementSelector: null
+            elementSelector: null,
+            activeProductId: 0,
         },
 
         _create: function () {
@@ -49,8 +46,11 @@ define([
             }
 
             if (this.options.listenEvent) {
-                this.element.on(this.options.listenEvent, this._load.bind(this))
+                this.element.on(this.options.listenEvent, this._load(self).bind(this))
             }
+
+            var self = this;
+            this._setActiveProductClass(self);
         },
 
         _load: function () {
@@ -59,17 +59,27 @@ define([
                 if (this.options.elementSelector) {
                     el = $(this.options.elementSelector);
                 }
-
                 if (this.options.defer) {
                     $(':mage-loader').loader('show');
                 }
 
                 el.load(this.options.loadUrl, function () {
+                    $.mage.init();
+                    $('.product-item').removeClass('active');
+                    console.log(this.options.activeProductId);
+                    $('.product-item:eq('+this.options.activeProductId+')').addClass('active');
                     if (this.options.defer) {
                         $(':mage-loader').loader('hide');
                     }
                 }.bind(this));
             }
+        },
+
+        _setActiveProductClass: function (self) {
+            $('._show .product-item').unbind('click');
+            $('._show .product-item').on('click', function () {
+                self.options.activeProductId = $('._show .product-item').index(this);
+            });
         }
     });
 

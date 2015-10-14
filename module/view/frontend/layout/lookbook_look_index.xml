@@ -3,6 +3,7 @@
     <head>
         <css src='MagentoEse_LookBook/css/lib/owl.carousel.min.css'/>
         <css src='MagentoEse_LookBook/css/lib/owl.theme.default.min.css'/>
+        <css src="mage/gallery/gallery.css"/>
     </head>
     <body>
         <referenceBlock name="breadcrumbs" remove="true"/>

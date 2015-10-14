@@ -13,14 +13,6 @@
                 <div class="product-item-info" data-container="product-grid" data-load-url="<?= $block->getDetailUrl($product) ?>">
                     <?php $productImage = $block->getImage($product, 'category_page_grid'); ?>
                     <?= $productImage->toHtml() // Product Image ?>
-                    <div class="product details product-item-details">
-                        <?php $_productNameStripped = $block->stripTags($product->getName(), null, true); ?>
-                        <div class="product name product-item-name">
-                            <a class="product-item-link" href="#<?= $product->getId() ?>-<?= $product->getUrlKey() ?>">
-                                <?= $helper->productAttribute($product, $product->getName(), 'name'); ?>
-                            </a>
-                        </div>
-                    </div>
                 </div>
                 <?= ($iterator == count($productCollection) + 1) ? '</li>' : '' ?>
             <?php endforeach; ?>

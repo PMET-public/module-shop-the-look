@@ -14,7 +14,10 @@ class Item extends ProductView
 
         $product = $this->_initProduct();
         if ($product) {
+            $productTypeId = $product->getTypeId();
+
             $page = $this->resultPageFactory->create();
+            $page->addHandle('catalog_product_view_type_'.$productTypeId);
             $result->setContents($page->getLayout()->renderElement('lookbook.product.info'));
         } else {
             $result->setHttpResponseCode(404);

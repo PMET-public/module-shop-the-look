@@ -134,7 +134,45 @@
         }
     }
 }
+.modal-popup.lookbook .lookbook-view {
+    display: flex;
+    flex-direction: row;
+    flex-flow: row-reverse;
+    padding-bottom: 3rem;
+    .products.wrapper {
+        flex: 1;
+        border-left: 1px solid @color-gray80;
+        padding-left: 3rem;
+        margin-top: 0;
+        margin-bottom: 0;
+        .product-item {
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+    .product.wrapper {
+        flex: 6;
+        margin-right: 15px;
+        position: relative;
+        .loader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    }
+}
 
+.is-paused {
+    width: 100% !important;
+    height: 100% !important;
+    line-height: inherit !important;
+}
 
 // Less than 480px, overrides anything greater
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
@@ -325,7 +363,9 @@
             }
         }
     }
+
 }
+
 
 // Greater than 1024px, overrides anything less
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
