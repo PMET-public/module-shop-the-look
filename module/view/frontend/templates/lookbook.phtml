@@ -24,10 +24,10 @@
             <div class='aspot-container'>
                 <div class='aspot-img'>
                     <picture>
-                        <source srcset='<?= $block->getBaseMediaUrl() ?><?= $look->getLookBookMainImage() ?>_lg@2x.jpg' media='(min-width: 1261px)'>
-                        <source srcset='<?= $block->getBaseMediaUrl() ?><?= $look->getLookBookMainImage() ?>_lg.jpg, <?= $block->getBaseMediaUrl() ?><?= $look->getLookBookMainImage() ?>_lg@2x.jpg 2x' media='(min-width: 771px)'>
-                        <source srcset='<?= $block->getBaseMediaUrl() ?><?= $look->getLookBookMainImage() ?>_tab.jpg, <?= $block->getBaseMediaUrl() ?><?= $look->getLookBookMainImage() ?>_tab@2x.jpg 2x' media='(min-width: 401px)'>
-                        <img srcset='<?= $block->getBaseMediaUrl() ?><?= $look->getLookBookMainImage() ?>_mobi@2x.jpg 2x'>
+                        <source srcset='<?= $block->getCarouselMediaUrl($look->getLookBookMainImage() . '_lg@2x.jpg') ?>' media='(min-width: 1261px)'>
+                        <source srcset='<?= $block->getCarouselMediaUrl($look->getLookBookMainImage() . '_lg.jpg') ?>, <?= $block->getCarouselMediaUrl($look->getLookBookMainImage() . '_lg@2x.jpg') ?> 2x' media='(min-width: 771px)'>
+                        <source srcset='<?= $block->getCarouselMediaUrl($look->getLookBookMainImage() . '_tab.jpg') ?>, <?= $block->getCarouselMediaUrl($look->getLookBookMainImage() . '_tab@2x.jpg') ?> 2x' media='(min-width: 401px)'>
+                        <img srcset='<?= $block->getCarouselMediaUrl($look->getLookBookMainImage() . '_mobi@2x.jpg') ?> 2x'>
                     </picture>
                     <div class='details'>
                         <div class='headline'><?= $look->getName() ?></div>
@@ -44,8 +44,8 @@
                         </div>
                         <div class='image'>
                             <picture>
-                                <source srcset='<?= $block->getBasePromoMediaUrl() ?><?= $promo->getLookBookImage() ?>_sm.jpg, <?= $block->getBasePromoMediaUrl() ?><?= $promo->getLookBookImage() ?>_sm@2x.jpg 2x' media='(min-width: 771px)'>
-                                <img srcset='<?= $block->getBasePromoMediaUrl() ?><?= $promo->getLookBookImage() ?>.jpg, <?= $block->getBasePromoMediaUrl() ?><?= $promo->getLookBookImage() ?>@2x.jpg 2x'>
+                                <source srcset='<?= $block->getPromoMediaUrl($promo->getLookBookImage() . '_sm.jpg') ?>, <?= $block->getPromoMediaUrl($promo->getLookBookImage() . '_sm@2x.jpg') ?> 2x' media='(min-width: 771px)'>
+                                <img srcset='<?= $block->getPromoMediaUrl($promo->getLookBookImage() . '.jpg') ?>, <?= $block->getPromoMediaUrl($promo->getLookBookImage() . '@2x.jpg') ?> 2x'>
                             </picture>
                         </div>
                     </div>

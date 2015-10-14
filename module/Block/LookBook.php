@@ -14,6 +14,8 @@ use Magento\Framework\View\Element\Template\Context;
 
 class LookBook extends CategoryView
 {
+    const MEDIA_DIR_BASE = 'lookbook';
+
     protected $lookCollection;
 
     protected $sortedPromos;
@@ -118,13 +120,36 @@ class LookBook extends CategoryView
         return $this->getUrl('lookbook/look/view', ['id' => $category->getId()]);
     }
 
-    public function getBaseMediaUrl()
+    /**
+     * Returns URL to a carousel image using file name passed as final portion of URI
+     *
+     * @param $file
+     * @return string
+     */
+    public function getCarouselMediaUrl($file)
     {
-        return $this->getCurrentCategory()->getStore()->getBaseUrl(UrlInterface::URL_TYPE_MEDIA) . 'lookbook/look/';
+        return $this->getBaseMediaUrl() . 'carousel/' . $file;
     }
 
-    public function getBasePromoMediaUrl()
+    /**
+     * Returns URL to a promo image using file name passed as final portion of URI
+     *
+     * @param $file
+     * @return string
+     */
+    public function getPromoMediaUrl($file)
     {
-        return $this->getCurrentCategory()->getStore()->getBaseUrl(UrlInterface::URL_TYPE_MEDIA) . 'lookbook/promo/';
+        return $this->getBaseMediaUrl() . 'promo/' . $file;
+    }
+
+    /**
+     * Returns base URL for lookbook media
+     *
+     * @return string
+     */
+    public function getBaseMediaUrl()
+    {
+        $baseMediaUrl = $this->getCurrentCategory()->getStore()->getBaseUrl(UrlInterface::URL_TYPE_MEDIA);
+        return $baseMediaUrl . self::MEDIA_DIR_BASE . '/';
     }
 }
