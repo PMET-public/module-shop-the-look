@@ -21,17 +21,14 @@
             <?php endforeach; ?>
         </ol>
     </div>
-    <div class="product wrapper">
-        <div class="loader">
-            <img src="<?= $block->getViewFileUrl('images/loader-1.gif') ?>" />
-        </div>
-    </div>
+    <div class="product wrapper"></div>
     <script type="text/x-magento-init">
         {
             ".product-item": {
                 "MagentoEse_LookBook::lookbookLoadDetail": {
                     "listenEvent": "click",
-                    "elementSelector": ".product.wrapper"
+                    "elementSelector": ".product.wrapper",
+                    "loaderUrl": "<?= $block->getViewFileUrl('images/loader-1.gif') ?>"
                 }
             }
         }

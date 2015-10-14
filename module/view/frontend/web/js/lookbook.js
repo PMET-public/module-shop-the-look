@@ -34,7 +34,9 @@ define([
             defer: true,
             listenEvent: null,
             loadUrl: null,
-            elementSelector: null
+            elementSelector: null,
+            loaderUrl: null,
+            loaderClass: "loader"
         },
 
         _create: function () {
@@ -55,25 +57,19 @@ define([
 
         _load: function () {
             if (this.options.loadUrl) {
-                var el = this.element;
-                if (this.options.elementSelector) {
-                    el = $(this.options.elementSelector);
-                }
+                var el = $(this.options.elementSelector);
 
-                if (this.options.defer) {
-                    $(':mage-loader').loader('show');
-                }
+                el.html('');
+                el.append($('<div/>')
+                    .addClass(this.options.loaderClass)
+                    .append($('<img/>').attr('src', this.options.loaderUrl))
+                );
+
+                $(':' + this.widgetFullName).removeClass('active');
+                this.element.addClass('active');
 
                 el.load(this.options.loadUrl, function () {
                     $.mage.init();
-
-                    $(':MagentoEse_LookBook-lookbookLoadDetail').removeClass('active');
-
-                    if (this.options.defer) {
-                        $(':mage-loader').loader('hide');
-                    }
-
-                    this.element.addClass('active');
                 }.bind(this));
             }
         }
