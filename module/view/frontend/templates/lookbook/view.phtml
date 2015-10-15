@@ -15,7 +15,7 @@
                     >
                     <div class="product-item-info" data-container="product-grid">
                         <?php $productImage = $block->getImage($product, 'category_page_grid'); ?>
-                        <?= $productImage->toHtml() // Product Image ?>
+                        <img src="<?= $productImage->getImageUrl()?>" />
                     </div>
                 </li>
             <?php endforeach; ?>

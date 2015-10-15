@@ -13,8 +13,6 @@ define([
          * @private
          */
         _create: function () {
-            $(this.element); // wrap this.element
-
             this.element.addClass('owl-carousel');
             var owl = this.element.owlCarousel(this.options);
 
@@ -36,7 +34,6 @@ define([
             // After resizing window in Chrome, drawing issues cause other slides to show under current slide.
             // Since there are no other apparent solutions, triggering a redraw is the best way of fixing this issue.
             owl.on("resize.owl.carousel",function(e){
-                console.log("resize");
                 owl.hide().show(0);
             });
         },
