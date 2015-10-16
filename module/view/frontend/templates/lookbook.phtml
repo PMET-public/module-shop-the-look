@@ -38,7 +38,10 @@
                 </div>
                 <div class='aspot-promo'>
                     <?php foreach($sortedPromos as $promo): ?>
-                    <div class='promo'>
+                    <div class='promo'
+                            data-load-url="<?= $block->getLookViewUrl($look) ?>"
+                            data-promo-id="<?= $promo->getId() ?>"
+                        >
                         <div class='details'>
                             <div class='headline'><?= $promo->getLookBookHeadline() ?></div>
                             <div class='subtitle'><?= $promo->getLookBookSubtitle() ?></div>
@@ -58,9 +61,9 @@
     </div>
     <div class="lookbook-view" data-mage-init='{
             "MagentoEse_LookBook::lookbook": {
-                "modalClass":"lookbook",
-                "trigger":".shop-this-look",
-                "buttons":[]
+                    "modalClass":"lookbook",
+                    "trigger":".shop-this-look, .promo",
+                    "buttons":[]
             }
         }'>
     </div>

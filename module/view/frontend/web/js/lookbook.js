@@ -7,7 +7,8 @@ define([
 
     $.widget('MagentoEse_LookBook.lookbook', $.mage.modal, {
         toggleModal: function (event) {
-            this.options.loadUrl = $(event.toElement).data('load-url');
+            this.options.loadUrl = $(event.currentTarget).data('load-url');
+            this.options.viewPromoId = $(event.currentTarget).data('promo-id');
             this._super();
         },
 
@@ -31,10 +32,10 @@ define([
 
     $.widget('MagentoEse_LookBook.lookbookLoadDetail', {
         options: {
-            defer: true,
             listenEvent: null,
             loadUrl: null,
             elementSelector: null,
+            defaultProductId: null,
             loaderUrl: null,
             loaderClass: "loader"
         },
@@ -45,8 +46,13 @@ define([
                 this.options.loadUrl = this.element.data('load-url');
             }
 
-            this.options.defer = this.element.data('defer');
-            if (!this.options.defer) {
+            var viewPromoId = $(':MagentoEse_LookBook-lookbook').lookbook('option', 'viewPromoId');
+            if (viewPromoId) {
+                this.options.defaultProductId = viewPromoId;
+            }
+
+            this.options.productId = this.element.data('product-id');
+            if (this.options.defaultProductId != null && this.options.defaultProductId == this.options.productId) {
                 this._load()
             }
 
