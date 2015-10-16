@@ -30,7 +30,7 @@
                         <source srcset='<?= $block->getCarouselMediaUrl($look->getLookBookMainImage() . '_tab.jpg') ?>, <?= $block->getCarouselMediaUrl($look->getLookBookMainImage() . '_tab@2x.jpg') ?> 2x' media='(min-width: 401px)'>
                         <img srcset='<?= $block->getCarouselMediaUrl($look->getLookBookMainImage() . '_mobi@2x.jpg') ?> 2x'>
                     </picture>
-                    <div class='details'>
+                    <div class='details' data-load-url="<?= $block->getLookViewUrl($look) ?>">
                         <div class='headline'><?= $look->getName() ?></div>
                         <div class='subtitle'><?= $look->getDescription() ?></div>
                         <div class='button shop-this-look' data-load-url="<?= $block->getLookViewUrl($look) ?>"><?= __('Shop This Look') ?></div>
@@ -38,7 +38,10 @@
                 </div>
                 <div class='aspot-promo'>
                     <?php foreach($sortedPromos as $promo): ?>
-                    <div class='promo'>
+                    <div class='promo'
+                            data-load-url="<?= $block->getLookViewUrl($look) ?>"
+                            data-promo-id="<?= $promo->getId() ?>"
+                        >
                         <div class='details'>
                             <div class='headline'><?= $promo->getLookBookHeadline() ?></div>
                             <div class='subtitle'><?= $promo->getLookBookSubtitle() ?></div>
@@ -59,7 +62,7 @@
     <div class="lookbook-view" data-mage-init='{
             "MagentoEse_LookBook::lookbook": {
                     "modalClass":"lookbook",
-                    "trigger":".shop-this-look",
+                    "trigger":".shop-this-look, .promo",
                     "title": "<?= __('Shop This Look') ?>",
                     "type": "modal",
                     "reaponsive": true,
