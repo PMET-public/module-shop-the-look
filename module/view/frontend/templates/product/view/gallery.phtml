@@ -1,0 +1,59 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * Product media data template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View\Gallery
+ */
+?>
+<?php $module = "Magento_Catalog"; ?>
+<div class="gallery-placeholder" data-mage-init='{"productVideo":{"thumbHeight": <?php /* @escapeNotVerified */ echo $block->getImageAttribute('product_page_image_small', 'height')
+    ?: $block->getImageAttribute('product_page_image_small', 'width'); ?>}}'></div>
+<script type="text/x-magento-init">
+    {
+        ".gallery-placeholder": {
+            "mage/gallery/gallery": {
+                "mixins":["magnifier/magnify"],
+                "magnifierOpts": {
+                    "enabled": false
+                },
+                "data": <?php /* @escapeNotVerified */ echo $block->getGalleryItemsJson(); ?>,
+                "options": {
+
+                    "nav": "<?php /* @escapeNotVerified */ echo $block->getVar("gallery:nav", $module); ?>",
+                    "loop": <?php /* @escapeNotVerified */ echo $block->getVar("gallery:loop", $module); ?>,
+                    "keyboard": <?php /* @escapeNotVerified */ echo $block->getVar("gallery:keyboard", $module); ?>,
+                    "arrows": <?php /* @escapeNotVerified */ echo $block->getVar("gallery:arrows", $module); ?>,
+                    "showCaption": <?php /* @escapeNotVerified */ echo $block->getVar("gallery:showCaption", $module); ?>,
+                    "width": <?php /* @escapeNotVerified */ echo $block->getImageAttribute('product_page_image_medium', 'width'); ?>,
+                    "thumbwidth": <?php /* @escapeNotVerified */ echo $block->getImageAttribute('product_page_image_small', 'width'); ?>,
+                    "thumbheight": <?php /* @escapeNotVerified */ echo $block->getImageAttribute('product_page_image_small', 'height')
+        ?: $block->getImageAttribute('product_page_image_small', 'width'); ?>,
+                    "height": <?php /* @escapeNotVerified */ echo $block->getImageAttribute('product_page_image_medium', 'height')
+        ?: $block->getImageAttribute('product_page_image_medium', 'width'); ?>
+                },
+                "breakpoints": {
+                    "mobile": {
+                        "conditions": {
+                            "max-width": "767px"
+                        },
+                        "options": {
+                            "options": {
+                                "nav": "dots"
+                            },
+                            "magnifierOpts": {
+                                "enabled": false
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+</script>
