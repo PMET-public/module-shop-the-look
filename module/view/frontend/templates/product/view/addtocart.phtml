@@ -65,7 +65,7 @@
                 submitHandler: function (form) {
                     var widget = $(form).lookbookAddToCart({
                         bindSubmit: false,
-                        urlToCart: "<?= $_product->getStore()->getBaseUrl()."checkout/cart/" ?>"
+                        urlToCart: "<?= $_product->getStore()->getBaseUrl() . "checkout/cart/" ?>"
                     });
 
                     widget.lookbookAddToCart('submitForm', $(form));
@@ -76,3 +76,4 @@
         });
     </script>
 <?php endif; ?>
+

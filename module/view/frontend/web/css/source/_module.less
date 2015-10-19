@@ -50,7 +50,7 @@
     transition-delay: 1s;
 }
 
-.box-shadow(@blur, @spread, @opacity){
+.box-shadow(@blur, @spread, @opacity) {
     -webkit-box-shadow: 0 0 @blur @spread rgba(0, 0, 0, @opacity);
     -moz-box-shadow: 0 0 @blur @spread rgba(0, 0, 0, @opacity);
     box-shadow: 0 0 @blur @spread rgba(0, 0, 0, @opacity);
@@ -139,12 +139,10 @@
                         flex: 1;
                         display: flex;
                         background: @color-white;
-                        .details {
-                            .headline {
-                                font-family: @font-family__special;
-                                margin-bottom: 10px;
-                                text-transform: uppercase;
-                            }
+                        .details .headline {
+                            font-family: @font-family__special;
+                            margin-bottom: 10px;
+                            text-transform: uppercase;
                         }
                         &:last-child {
                             margin-right: 0;
@@ -207,20 +205,16 @@
                         display: block;
                     }
                 }
-                &.active {
-                    &:after {
-                        display: block;
-                    }
+                &.active:after {
+                    display: block;
                 }
-                &.added-to-cart {
-                    &:before {
-                        font-family: 'luma-icons';
-                        position: absolute;
-                        content: '\e60e';
-                        bottom: 0;
-                        left: 0;
-                        color: @color-dark-green1;
-                    }
+                &.added-to-cart:before {
+                    font-family: 'luma-icons';
+                    position: absolute;
+                    content: '\e60e';
+                    bottom: 0;
+                    left: 0;
+                    color: @color-dark-green1;
                 }
             }
         }
@@ -237,6 +231,9 @@
         min-height: 400px;
         display: flex;
         flex-direction: column-reverse;
+        .loader img {
+            width: 40px;
+        }
         .product-info-main {
             min-width: 300px;
             width: 100%;
@@ -250,15 +247,13 @@
                 display: flex;
                 flex-wrap: wrap;
                 margin: 4px auto 0 auto;
-                a {
-                    &:hover {
-                        background-color: transparent;
-                    }
+                a:hover {
+                    background-color: transparent;
                 }
                 .swatch-option.image,
                 .swatch-option.color,
                 .swatch-option.text {
-                    padding: 0px;
+                    padding: 0;
                     margin: 0 8px 8px 0;
                     min-width: 28px;
                     text-align:center;
@@ -276,14 +271,12 @@
     }
 }
 
-.lookbook-look-added {
-    .modal-footer {
-        padding-top: 0;
-        display: flex;
-        justify-content: space-between;
-        button {
-            width: 47%;
-        }
+.lookbook-look-added .modal-footer {
+    padding-top: 0;
+    display: flex;
+    justify-content: space-between;
+    button {
+        width: 47%;
     }
 }
 
@@ -392,7 +385,7 @@
         .prev {
             display: none;
         }
-        .next{
+        .next {
             display: none;
         }
         .column.main .lookbook .lookbook-carousel {
@@ -498,7 +491,7 @@
         .prev {
             .nav(0, initial, '\e617', flex-start, @height);
         }
-        .next{
+        .next {
             .nav(initial, 0, '\e608', flex-end, @height);
         }
         .column.main .lookbook-carousel .aspot-promo {
@@ -508,16 +501,13 @@
             }
         }
     }
-
     .lookbook-view {
         .products.wrapper .product-item {
             img{
                 max-height: 150px;
             }
-            &.added-to-cart {
-                &:before {
-                    font-size: 16px;
-                }
+            &.added-to-cart:before {
+                font-size: 16px;
             }
         }
         .product.wrapper {
@@ -528,7 +518,6 @@
         }
     }
 }
-
 
 // Greater than 1440px, overrides anything less
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl) {
@@ -557,11 +546,8 @@
                     img {
                         max-height: 200px;
                     }
-
-                    &.added-to-cart {
-                        &:before {
-                            font-size: 24px;
-                        }
+                    &.added-to-cart:before {
+                        font-size: 24px;
                     }
                 }
             }

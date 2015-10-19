@@ -53,11 +53,11 @@ define([
 
             this.options.productId = this.element.data('product-id');
             if (this.options.defaultProductId != null && this.options.defaultProductId == this.options.productId) {
-                this._load()
+                this._load();
             }
 
             if (this.options.listenEvent) {
-                this.element.on(this.options.listenEvent, this._load.bind(this))
+                this.element.on(this.options.listenEvent, this._load.bind(this));
             }
         },
 

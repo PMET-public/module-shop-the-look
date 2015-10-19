@@ -6,8 +6,6 @@ define([
     'use strict';
 
     $.widget('MagentoEse_LookBook.carousel', {
-        options: {},
-
         /**
          * Create MagentoEse_LookBook.carousel widget
          * @private
@@ -22,7 +20,7 @@ define([
         },
 
         _setKeyboardControlls: function (owl) {
-            $(document).keyup(function(e){
+            $(document).keyup(function(e) {
                 if (e.keyCode == 37) {
                     owl.trigger('prev.owl.carousel');
                 } else if (e.keyCode == 39) {
@@ -30,18 +28,20 @@ define([
                 }
             });
         },
+
         _redrawOnResize: function (owl) {
             // After resizing window in Chrome, drawing issues cause other slides to show under current slide.
             // Since there are no other apparent solutions, triggering a redraw is the best way of fixing this issue.
-            owl.on("resize.owl.carousel",function(e){
+            owl.on("resize.owl.carousel",function(e) {
                 owl.hide().show(0);
             });
         },
+
         _addNavButtons: function (owl) {
-            $('.column.main .prev').click(function(){
+            $('.column.main .prev').click(function() {
                 owl.trigger('prev.owl.carousel');
             });
-            $('.column.main .next').click(function(){
+            $('.column.main .next').click(function() {
                 owl.trigger('next.owl.carousel');
             });
         }
