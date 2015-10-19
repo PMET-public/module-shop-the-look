@@ -6,7 +6,7 @@
         <container name="lookbook.product.info"/>
         <move element="product.info.main" destination="lookbook.product.info" />
         <move element="product.info.media" destination="lookbook.product.info" />
-
+        <referenceBlock name="product.info.review" remove="true" />
         <referenceBlock name="product.info.media.image">
             <action method="setTemplate">
                 <argument name="template" xsi:type="string">MagentoEse_LookBook::product/view/gallery.phtml</argument>
