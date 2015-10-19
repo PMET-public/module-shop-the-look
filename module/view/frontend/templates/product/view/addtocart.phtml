@@ -64,7 +64,8 @@
                 radioCheckboxClosest: '.nested',
                 submitHandler: function (form) {
                     var widget = $(form).lookbookAddToCart({
-                        bindSubmit: false
+                        bindSubmit: false,
+                        urlToCart: "<?= $_product->getStore()->getBaseUrl()."checkout/cart/" ?>"
                     });
 
                     widget.lookbookAddToCart('submitForm', $(form));

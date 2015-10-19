@@ -5,25 +5,16 @@
 define([
     'jquery',
     'mage/translate',
-    'jquery/ui',
-    'Magento_Catalog/js/catalog-add-to-cart'
-], function($, $t) {
+    'Magento_Catalog/js/catalog-add-to-cart',
+    'Magento_Ui/js/modal/alert',
+    'Magento_Ui/js/modal/confirm'
+], function($, $t, $c, alert, confirm) {
     "use strict";
 
     $.widget('MagentoEse.lookbookAddToCart', $.mage.catalogAddToCart, {
         options: {
-            processStart: null,
-            processStop: null,
-            bindSubmit: true,
-            minicartSelector: '[data-block="minicart"]',
             messagesSelector: '.lookbook .product-item.active',
-            productStatusSelector: '.stock.available',
-            addToCartButtonSelector: '.action.tocart',
-            addToCartButtonDisabledClass: 'disabled',
-            addToCartButtonTextWhileAdding: $t('Adding...'),
-            addToCartButtonTextAdded: $t('Added'),
-            addToCartButtonTextDefault: $t('Add to Cart')
-
+            urlToCart: null
         },
         ajaxSubmit: function(form) {
             var self = this;
@@ -59,6 +50,33 @@ define([
                     self.enableAddToCartButton(form);
                     if ($('.lookbook .product-item:not(.added-to-cart)').length) {
                         $('.lookbook .product-item:not(.added-to-cart, .active)')[0].click();
+                    }
+                    else {
+                        $(':MagentoEse_LookBook-lookbook').trigger('closeModal');
+                        alert({
+                            title: "You've got the look!",
+                            content: "",
+                            modalClass: "confirm lookbook-look-added",
+                            actions: {
+                                always: function(){},
+                                confirm: function(){},
+                                cancel: function(){}
+                            },
+                            buttons: [{
+                                text: $.mage.__('View Bag'),
+                                class: 'action-primary',
+                                click: function(){
+                                    this.closeModal();
+                                    window.location.href = self.options.urlToCart;
+                                }
+                            }, {
+                                text: $.mage.__('Continue Shopping'),
+                                class: 'action-secondary',
+                                click: function() {
+                                    this.closeModal(true);
+                                }
+                            }]
+                        });
                     }
                 }
             });
