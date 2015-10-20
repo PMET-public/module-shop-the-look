@@ -22,11 +22,13 @@ define([
                     this.openModal_super();
                 }.bind(this))
             }
+            $(':MagentoEse_LookBook-carousel').carousel('option', 'keysEnabled', false);
         },
 
         closeModal: function () {
             this._super();
             this.element.html('');
+            $(':MagentoEse_LookBook-carousel').carousel('option', 'keysEnabled', true);
         }
     });
 
@@ -59,6 +61,8 @@ define([
             if (this.options.listenEvent) {
                 this.element.on(this.options.listenEvent, this._load.bind(this));
             }
+
+            $('body').addClass('catalog-product-view');
         },
 
         _load: function () {

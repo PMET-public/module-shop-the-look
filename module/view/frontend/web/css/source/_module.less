@@ -22,7 +22,7 @@
 
 .nav(@left, @right, @icon, @justify, @bottom) {
     position: absolute;
-    width: 10%;
+    width: 5%;
     left: @left;
     right: @right;
     top: 0;
@@ -306,73 +306,65 @@
 
 // Less than 640px, overrides anything greater
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
-    .lookbook-wrapper .page-main {
-        .prev {
-            display: none;
-        }
-        .next {
-            display: none;
-        }
-        .column.main .lookbook .lookbook-carousel .aspot-container {
-            .aspot-img {
-                position: relative;
-                .details {
-                    top: initial;
-                    left: 0;
-                    bottom: 0;
-                    right: 0;
-                    width: 100%;
-                    padding: 10px;
-                    text-align: left;
-                    box-sizing: border-box;
-                    .headline {
-                        font-size: 24px;
-                        margin-bottom: 0;
-                    }
-                    .subtitle {
-                        font-weight: 600;
-                    }
-                    .button {
-                        content: '';
-                        &:after {
-                            font-family: 'luma-icons';
-                            content: '\e608';
-                            float: right;
-                            color: #ffffff;
-                            font-size: 40px;
-                            height: 100%;
-                            position: absolute;
-                            right: 10px;
-                            top: 25%;
-                            line-height: 40px;
-                        }
+    .lookbook-wrapper .page-main .column.main .lookbook .lookbook-carousel .aspot-container {
+        .aspot-img {
+            position: relative;
+            .details {
+                top: initial;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                width: 100%;
+                padding: 10px;
+                text-align: left;
+                box-sizing: border-box;
+                .headline {
+                    font-size: 24px;
+                    margin-bottom: 0;
+                }
+                .subtitle {
+                    font-weight: 600;
+                }
+                .button {
+                    content: '';
+                    &:after {
+                        font-family: 'luma-icons';
+                        content: '\e608';
+                        float: right;
+                        color: #ffffff;
+                        font-size: 40px;
+                        height: 100%;
+                        position: absolute;
+                        right: 10px;
+                        top: 25%;
+                        line-height: 40px;
                     }
                 }
             }
-            .aspot-promo {
-                flex-direction: column;
-                .promo {
+        }
+        .aspot-promo {
+            flex-direction: column;
+            .promo {
+                flex-direction: row;
+                order: 1;
+                margin: 0 0 20px 0;
+                .details {
+                    flex: 3;
+                    .headline {
+                        font-size: 18px;
+                    }
+                    .subtitle {
+                        font-size: 14px;
+                    }
+                }
+                .image {
+                    flex: 1;
+                    padding-left: 10px;
+                }
+                &:last-child {
                     flex-direction: row;
-                    order: 1;
-                    margin: 0 0 20px 0;
-                    .details {
-                        flex: 3;
-                        .headline {
-                            font-size: 18px;
-                        }
-                        .subtitle {
-                            font-size: 14px;
-                        }
-                    }
-                    .image {
-                        flex: 1;
-                        padding-left: 10px;
-                    }
-                    &:last-child {
-                        flex-direction: row;
-                        order: 0;
-                        margin: 20px 0 20px 0;
-                    }
+                    order: 0;
+                    margin: 20px 0 20px 0;
                 }
             }
         }
@@ -381,32 +373,24 @@
 
 // Greater than 640px, overrides anything less
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
-    .lookbook-wrapper .page-main {
-        .prev {
-            display: none;
+    .lookbook-wrapper .page-main .column.main .lookbook .lookbook-carousel {
+        .aspot-img .details .button {
+            display: inline-block;
         }
-        .next {
-            display: none;
-        }
-        .column.main .lookbook .lookbook-carousel {
-            .aspot-img .details .button {
-                display: inline-block;
+        .aspot-promo .promo {
+            flex-direction: column;
+            .details {
+                flex: 1;
+                .headline {
+                    font-size: 16px;
+                }
+                .subtitle {
+                    font-size: 12px;
+                }
             }
-            .aspot-promo .promo {
-                flex-direction: column;
-                .details {
-                    flex: 1;
-                    .headline {
-                        font-size: 16px;
-                    }
-                    .subtitle {
-                        font-size: 12px;
-                    }
-                }
-                .image {
-                    align-self: center;
-                    justify-content: flex-end;
-                }
+            .image {
+                align-self: center;
+                justify-content: flex-end;
             }
         }
     }
@@ -494,7 +478,7 @@
         .next {
             .nav(initial, 0, '\e608', flex-end, @height);
         }
-        .column.main .lookbook-carousel .aspot-promo {
+        .column.main .lookbook .lookbook-carousel .aspot-promo {
             height: @height;
             .promo:not(:last-child) {
                 height: @height - 60px;

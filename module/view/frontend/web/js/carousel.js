@@ -6,6 +6,9 @@ define([
     'use strict';
 
     $.widget('MagentoEse_LookBook.carousel', {
+        options: {
+            keysEnabled: true
+        },
         /**
          * Create MagentoEse_LookBook.carousel widget
          * @private
@@ -20,11 +23,14 @@ define([
         },
 
         _setKeyboardControlls: function (owl) {
+            var self = this;
             $(document).keyup(function(e) {
-                if (e.keyCode == 37) {
-                    owl.trigger('prev.owl.carousel');
-                } else if (e.keyCode == 39) {
-                    owl.trigger('next.owl.carousel');
+                if (self.options.keysEnabled) {
+                    if (e.keyCode == 37) {
+                        owl.trigger('prev.owl.carousel');
+                    } else if (e.keyCode == 39) {
+                        owl.trigger('next.owl.carousel');
+                    }
                 }
             });
         },
