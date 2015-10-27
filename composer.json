@@ -2,14 +2,12 @@
     "name": "magentoese/module-lookbook",
     "type": "magento2-module",
     "require": {
-        "magento/magento-composer-installer": "*"
+        "magento/framework": "*"
     },
-    "extra": {
-        "map": [
-            [
-                "module",
-                "MagentoEse/LookBook"
-            ]
-        ]
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "MagentoEse\\LookBook\\": ""
+        }
     }
 }
