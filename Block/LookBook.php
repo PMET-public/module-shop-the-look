@@ -6,7 +6,7 @@ use Magento\Catalog\Block\Category\View as CategoryView;
 use Magento\Catalog\Helper\Category as CategoryHelper;
 use Magento\Catalog\Model\Category;
 use Magento\Catalog\Model\Layer\Resolver;
-use Magento\Catalog\Model\Resource\Product\CollectionFactory as ProductCollectionFactory;
+use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory as ProductCollectionFactory;
 use Magento\Framework\DB\Select;
 use Magento\Framework\Registry;
 use Magento\Framework\UrlInterface;
@@ -44,7 +44,7 @@ class LookBook extends CategoryView
     /**
      * Returns collection of children categories used to display looks
      *
-     * @return \Magento\Catalog\Model\Resource\Category\Collection
+     * @return \Magento\Catalog\Model\ResourceModel\Category\Collection
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getLookCollection()
@@ -52,7 +52,7 @@ class LookBook extends CategoryView
         if ($this->lookCollection === null) {
             $category = $this->getCurrentCategory();
 
-            /* @var $collection \Magento\Catalog\Model\Resource\Category\Collection */
+            /* @var $collection \Magento\Catalog\Model\ResourceModel\Category\Collection */
             $collection = $category->getCollection();
             $collection->addAttributeToSelect('url_key')
                 ->addAttributeToSelect('name')
