@@ -7,7 +7,7 @@ use Magento\Framework\Controller\ResultFactory;
 
 class Item extends ProductView
 {
-    public function execute()
+    public function executeInternal()
     {
         /** @var \Magento\Framework\Controller\Result\Raw $result */
         $result = $this->resultFactory->create(ResultFactory::TYPE_RAW);
