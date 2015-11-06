@@ -7,7 +7,7 @@ use Magento\Framework\Controller\ResultFactory;
 
 class View extends CategoryView
 {
-    public function executeInternal()
+    public function execute()
     {
         /** @var \Magento\Framework\Controller\Result\Raw $result */
         $result = $this->resultFactory->create(ResultFactory::TYPE_RAW);
