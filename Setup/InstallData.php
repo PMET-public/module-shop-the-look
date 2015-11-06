@@ -43,66 +43,77 @@ class InstallData implements InstallDataInterface
      */
     public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
-        /** @var EavSetup $eavSetup */
-        $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
+        $connection = $setup->getConnection();
+        try {
+            $connection->beginTransaction();
 
-        /**
-         * Add attributes to the eav/attribute
-         */
-        $eavSetup->addAttribute(
-            Product::ENTITY,
-            'look_book_headline',
-            [
-                'type' => 'varchar',
-                'label' => 'Shop the Look Headline',
-                'input' => 'text',
-                'required' => false,
-                'sort_order' => 30,
-                'global' => Attribute::SCOPE_STORE,
-                'group' => 'Product Details',
-            ]
-        );
+            /** @var EavSetup $eavSetup */
+            $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
 
-        $eavSetup->addAttribute(
-            Product::ENTITY,
-            'look_book_subtitle',
-            [
-                'type' => 'varchar',
-                'label' => 'Shop the Look Subtitle',
-                'input' => 'text',
-                'required' => false,
-                'sort_order' => 35,
-                'global' => Attribute::SCOPE_STORE,
-                'group' => 'Product Details',
-            ]
-        );
+            /**
+             * Add attributes to the eav/attribute
+             */
+            $eavSetup->addAttribute(
+                Product::ENTITY,
+                'look_book_headline',
+                [
+                    'type' => 'varchar',
+                    'label' => 'Shop the Look Headline',
+                    'input' => 'text',
+                    'required' => false,
+                    'sort_order' => 30,
+                    'global' => Attribute::SCOPE_STORE,
+                    'group' => 'Product Details',
+                ]
+            );
 
-        $eavSetup->addAttribute(
-            Product::ENTITY,
-            'look_book_image',
-            [
-                'type' => 'varchar',
-                'label' => 'Shop the Look Image',
-                'input' => 'text',
-                'required' => false,
-                'sort_order' => 40,
-                'global' => Attribute::SCOPE_STORE,
-                'group' => 'Product Details',
-            ]
-        );
+            $eavSetup->addAttribute(
+                Product::ENTITY,
+                'look_book_subtitle',
+                [
+                    'type' => 'varchar',
+                    'label' => 'Shop the Look Subtitle',
+                    'input' => 'text',
+                    'required' => false,
+                    'sort_order' => 35,
+                    'global' => Attribute::SCOPE_STORE,
+                    'group' => 'Product Details',
+                ]
+            );
 
-        $eavSetup->addAttribute(
-            Category::ENTITY,
-            'look_book_main_image',
-            [
-                'type' => 'varchar',
-                'label' => 'Shop the Look Image',
-                'input' => 'text',
-                'required' => false,
-                'sort_order' => 20,
-                'global' => Attribute::SCOPE_STORE,
-                'group' => 'General Information'
-            ]
-        );
+            $eavSetup->addAttribute(
+                Product::ENTITY,
+                'look_book_image',
+                [
+                    'type' => 'varchar',
+                    'label' => 'Shop the Look Image',
+                    'input' => 'text',
+                    'required' => false,
+                    'sort_order' => 40,
+                    'global' => Attribute::SCOPE_STORE,
+                    'group' => 'Product Details',
+                ]
+            );
+
+            $eavSetup->addAttribute(
+                Category::ENTITY,
+                'look_book_main_image',
+                [
+                    'type' => 'varchar',
+                    'label' => 'Shop the Look Image',
+                    'input' => 'text',
+                    'required' => false,
+                    'sort_order' => 20,
+                    'global' => Attribute::SCOPE_STORE,
+                    'group' => 'General Information'
+                ]
+            );
+            $connection->commit();
+        } catch (\Exception $e) {
+
+            // If an error occured rollback the database changes as if they never happened
+            $connection->rollback();
+            throw $e;
+        }
     }
 }
