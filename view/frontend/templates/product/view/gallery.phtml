@@ -12,8 +12,8 @@
  * @var $block \Magento\Catalog\Block\Product\View\Gallery
  */
 ?>
-<?php $module = "Magento_Catalog"; ?>
-<div class="gallery-placeholder" data-mage-init='{"productVideo":{"thumbHeight": <?php /* @escapeNotVerified */ echo $block->getImageAttribute('product_page_image_small', 'height')
+<?php $module = "MagentoEse_LookBook"; ?>
+<div class="gallery-placeholder" data-gallery-role="gallery-placeholder" data-mage-init='{"productVideo":{"thumbHeight": <?php /* @escapeNotVerified */ echo $block->getImageAttribute('product_page_image_small', 'height')
     ?: $block->getImageAttribute('product_page_image_small', 'width'); ?>}}'></div>
 <script type="text/x-magento-init">
     {
@@ -23,20 +23,34 @@
                 "magnifierOpts": {
                     "enabled": false
                 },
-                "data": <?php /* @escapeNotVerified */ echo $block->getGalleryItemsJson(); ?>,
+                "data": <?php /* @escapeNotVerified */ echo $block->getGalleryImagesJson(); ?>,
                 "options": {
-
-                    "nav": "<?php /* @escapeNotVerified */ echo $block->getVar("gallery:nav", $module); ?>",
-                    "loop": <?php /* @escapeNotVerified */ echo $block->getVar("gallery:loop", $module); ?>,
-                    "keyboard": <?php /* @escapeNotVerified */ echo $block->getVar("gallery:keyboard", $module); ?>,
-                    "arrows": <?php /* @escapeNotVerified */ echo $block->getVar("gallery:arrows", $module); ?>,
-                    "showCaption": <?php /* @escapeNotVerified */ echo $block->getVar("gallery:showCaption", $module); ?>,
+                    "nav": "<?php /* @escapeNotVerified */ echo $block->getVar("gallery/nav", $module); ?>",
+                    "loop": <?php /* @escapeNotVerified */ echo $block->getVar("gallery/loop", $module); ?>,
+                    "keyboard": <?php /* @escapeNotVerified */ echo $block->getVar("gallery/keyboard", $module); ?>,
+                    "arrows": <?php /* @escapeNotVerified */ echo $block->getVar("gallery/arrows", $module); ?>,
+                    "allowfullscreen": <?php /* @escapeNotVerified */ echo $block->getVar("gallery/allowfullscreen", $module); ?>,
+                    "showCaption": <?php /* @escapeNotVerified */ echo $block->getVar("gallery/caption", $module); ?>,
                     "width": <?php /* @escapeNotVerified */ echo $block->getImageAttribute('product_page_image_medium', 'width'); ?>,
                     "thumbwidth": <?php /* @escapeNotVerified */ echo $block->getImageAttribute('product_page_image_small', 'width'); ?>,
                     "thumbheight": <?php /* @escapeNotVerified */ echo $block->getImageAttribute('product_page_image_small', 'height')
         ?: $block->getImageAttribute('product_page_image_small', 'width'); ?>,
                     "height": <?php /* @escapeNotVerified */ echo $block->getImageAttribute('product_page_image_medium', 'height')
-        ?: $block->getImageAttribute('product_page_image_medium', 'width'); ?>
+        ?: $block->getImageAttribute('product_page_image_medium', 'width'); ?>,
+                    "transitionduration": <?php /* @escapeNotVerified */  echo $block->getVar("gallery/transition/duration", $module); ?>,
+                    "transition": "<?php /* @escapeNotVerified */  echo $block->getVar("gallery/transition/effect", $module); ?>",
+                    "navarrows": <?php /* @escapeNotVerified */  echo $block->getVar("gallery/navarrows", $module); ?>,
+                    "navtype": "<?php /* @escapeNotVerified */  echo $block->getVar("gallery/navtype", $module); ?>",
+                    "navdir": "<?php /* @escapeNotVerified */  echo $block->getVar("gallery/navdir", $module); ?>"
+                },
+                "fullscreen": {
+                    "nav": "<?php /* @escapeNotVerified */  echo $block->getVar("gallery/fullscreen/nav", $module); ?>",
+                    "loop": <?php /* @escapeNotVerified */  echo $block->getVar("gallery/fullscreen/loop", $module); ?>,
+                    "navdir": "<?php /* @escapeNotVerified */  echo $block->getVar("gallery/fullscreen/navdir", $module); ?>",
+                    "arrows": <?php /* @escapeNotVerified */  echo $block->getVar("gallery/fullscreen/arrows", $module); ?>,
+                    "showCaption": <?php /* @escapeNotVerified */  echo $block->getVar("gallery/fullscreen/caption", $module); ?>,
+                    "transitionduration": <?php /* @escapeNotVerified */  echo $block->getVar("gallery/fullscreen/transition/duration", $module); ?>,
+                    "transition": "<?php /* @escapeNotVerified */  echo $block->getVar("gallery/fullscreen/transition/effect", $module); ?>"
                 },
                 "breakpoints": {
                     "mobile": {

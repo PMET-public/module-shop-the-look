@@ -99,7 +99,7 @@ class LookBook extends CategoryView
                 $position = $look->getProductsPosition();
 
                 foreach ($productCollection as $product) {
-                    if (isset($position[$product->getId()]) && $position[$product->getId()] > 0) {
+                    if (isset($position[$product->getId()]) && isset($position[$product->getId()])) {
                         $this->sortedPromos[$look->getId()][$position[$product->getId()]] = $product;
                     }
                 }
